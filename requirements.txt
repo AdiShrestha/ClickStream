@@ -6,3 +6,4 @@ matplotlib>=3.9
 seaborn>=0.13
 pytest>=8.2
 requests>=2.32
+torch>=2.0

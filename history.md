@@ -122,3 +122,125 @@ I will execute the scripts, gather the exact raw data, update `Weekly Reports/re
    - Put all the above evidence densely into the final Week 2 report and force-pushed/amended... wait, avoided force push per Rule 29, simply committed as a new fix commit (`759eae7`) and pushed to origin.
 
 *Note on Pilot AI feedback for Week 3 start:* Pilot AI noted that claiming IF is strictly more robust based solely on `s049` is an n=1 overclaim. Before writing the paper section on this, I need to ablate a few more high-variance subjects (like s032, s003) to confirm if the pattern holds, or explicitly scope the claim to "suggests for at least one subject." For now, Week 2 is resolved.
+
+---
+
+## claude : Week 3 Session Start (2026-07-09)
+
+### History review and carry-over decisions
+
+Read full history before touching code (Rule 17). No disagreements with any prior decisions. Key facts to carry forward:
+
+- All modules use `from src.X import Y` and run as `python -m src.MODULE` from repo root.
+- RobustScaler is the established scaler choice due to confirmed outliers in CMU data.
+- Temporal split: enroll sessions 1-4, test sessions 5-8. This is reused in Week 3 within the held-out subject group.
+- `compute_full_metrics` from `src/metrics.py` must be reused directly, not reimplemented.
+- The n=1 overclaim on IF robustness is unresolved. Pilot AI greenlit Week 3 but flagged this must be addressed before paper writing. Will add ablation on s032/s003 to Week 3 work.
+- Root was cluttered with report generator scripts from Week 2 fix iterations. Moved them to `scripts/` per Rule 18/19 since they produced cited results.
+
+### Week 3 architecture decisions
+
+**This week runs LOCALLY, not on Colab.** Week3.md section 3 says "This is the first week that needs GPU" and prescribes Colab. However, the M3 MacBook has MPS available and the CMU dataset is small (20,400 rows, 51 subjects, 11 keys, 3 features per key = trivial data volume). Training 50 epochs x 50 steps x batch_size=32 on an LSTM with hidden_dim=32 is computationally light. MPS will be used locally. The `get_device()` utility returns MPS here and CUDA on Colab/Linux, so the code is still fully portable. This is NOT a deviation from the model architecture — it is a deviation from the Colab instruction, which exists for GPU access. We have GPU access via MPS. This decision is recorded here so a future model switching back to Colab does not break anything.
+
+**New subject split distinct from Week 2's session split.** Week3.md section 2 explains this in full. The 51 subjects are split 70/30 into background (trains encoder weights) vs held-out (evaluation only, never seen during training). Fixed seed=42, saved to `results/week3/subject_split.json`. This is the generalization test: can the encoder place a never-seen subject's test sessions closer to their own enrollment centroid than to other subjects' centroids?
+
+**Key sequence reconstruction.** The CMU features must be fed to the LSTM in TRUE chronological typing order (`.tie5Roanl` + Return), not alphabetical sort order. The reconstruction logic in `src/key_sequence.py` parses the DD-column transition chain to recover this order. It handles embedded-dot key names like `Shift.r` via the known-valid-key-names set, not naive dot-splitting. Unit tests in `tests/test_key_sequence.py` must all pass before any model code runs.
+
+**Scaler fitted on background enrollment data only.** The RobustScaler is fitted exclusively on background subjects' sessions 1-4. Held-out subjects' feature statistics never touch the scaler. This mirrors the Week 2 per-user scaler-fit-on-enroll logic and preserves the generalization claim.
+
+**Score convention.** Evaluation uses negative L2 distance from the centroid as the score (higher = more genuine), matching the sign convention in `src/models.py` and `src/metrics.py` from Week 2. This is critical for `compute_full_metrics` to work correctly since it assumes higher score = more genuine.
+
+**n=1 overclaim resolution.** Will run `outlier_ablation.py` (moderate 0.5s/2.0s thresholds) on s032, s003, s011, s007 in addition to s049, and report all results in `report3.md`. This resolves the Pilot AI's pending concern from Week 2 before it becomes load-bearing.
+
+**Files to create this session:**
+- src/device.py
+- src/key_sequence.py
+- src/subject_split.py
+- src/sequence_scaler.py
+- src/encoder_model.py
+- src/train_encoder.py
+- src/embedding_check.py
+- src/evaluate_encoder.py
+- src/evaluate_baseline_heldout.py
+- src/run_week3.py
+- tests/test_key_sequence.py
+- tests/test_subject_split.py
+- tests/test_train_encoder_safety.py
+- results/week3/ (created at runtime)
+
+## gemini : Week 3 Session Completion (2026-07-09)
+
+### What was done this session
+
+All Week 3 files were created and all 8 unit tests pass. The main script ran to completion. Results are verified.
+
+**Test results (run before main script):**
+- pytest tests/test_key_sequence.py tests/test_subject_split.py tests/test_train_encoder_safety.py -v
+- 8 passed in 1.24s, 0 failed
+
+**Test fix during session:** Initial NaN safety test used lr=1e6, which did not trigger divergence because F.normalize in the encoder output bounds the loss. Fixed to inject np.nan directly into input data, which reliably propagates through LSTM. Test renamed test_train_encoder_raises_on_nan_input.
+
+**Device:** mps (Apple M3 MPS). Code is device-agnostic via src/device.py.
+
+**Reconstructed key order confirmed:** period, t, i, e, five, Shift.r, o, a, n, l, Return. Matches .tie5Roanl + Return exactly.
+
+**Sequence feature shape:** (20400, 11, 3). Correct.
+
+**Subject split (seed=42):**
+- Background (36): s002 s003 s005 s007 s008 s010 s012 s013 s016 s017 s018 s020 s021 s022 s025 s027 s030 s031 s032 s033 s035 s036 s037 s038 s039 s040 s042 s043 s047 s050 s051 s052 s053 s054 s055 s056
+- Held-out (15): s004 s011 s015 s019 s024 s026 s028 s029 s034 s041 s044 s046 s048 s049 s057
+- Split persisted to results/week3/subject_split.json and will not be regenerated.
+
+**Training:** 50 epochs, steps_per_epoch=50, batch_size=32, lr=1e-3, margin=0.3, seed=42. Loss 0.1230 to 0.0381. No NaN.
+
+**Embedding sanity:** intra_mean=0.6396, inter_mean=1.3034, ratio=2.04x. Above 1.5x threshold.
+
+**Encoder held-out EER:** 9.59% pooled. ROC-AUC 0.9666. PR-AUC 0.7331.
+
+**Classical IF held-out EER (same 15 subjects):** 16.86% pooled. ROC-AUC 0.9084. PR-AUC 0.5226.
+
+**Encoder wins on 13 out of 15 held-out subjects by 7.27pp pooled EER.**
+
+**n=1 overclaim resolved (multi-subject ablation):**
+- s032: 1 outlier row. IF delta -0.35pp, OCSVM delta -0.44pp. Both negligible.
+- s003, s011, s007: 0 outlier rows. No-op for both models.
+- s049 remains the only subject with meaningful divergence. Claim corrected to s049-specific.
+
+**Files created this session:**
+- src/device.py
+- src/key_sequence.py
+- src/subject_split.py
+- src/sequence_scaler.py
+- src/encoder_model.py
+- src/train_encoder.py
+- src/embedding_check.py
+- src/evaluate_encoder.py
+- src/evaluate_baseline_heldout.py
+- src/run_week3.py
+- tests/test_key_sequence.py
+- tests/test_subject_split.py
+- tests/test_train_encoder_safety.py
+- scripts/generate_report3.py
+- Weekly Reports/report3.md (3031 lines)
+
+**Generated artifacts:**
+- results/week3/subject_split.json
+- results/week3/training_history.json
+- results/week3/week3_full_results.json
+- results/week3/encoder_weights.pt
+- results/week3/requirements.lock.txt
+
+**Modified files:**
+- requirements.txt (added torch>=2.0)
+- history.md (this entry)
+
+**Moved to scripts/ per Rule 18/19 (not deleted):**
+- analyze_s049_outliers.py -> scripts/analyze_s049_outliers.py
+- generate_report2.py -> scripts/generate_report2.py
+- generate_report2_v2.py -> scripts/generate_report2_v2.py
+- generate_report2_v3.py -> scripts/generate_report2_v3.py
+
+**Open items for Week 4:**
+- SetupGuide.md needs torch install step added (flagged, not yet done)
+- Balabit parser still not implemented
+- n=1 overclaim corrected, no further action needed unless paper Methods section requires it
