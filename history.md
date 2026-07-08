@@ -39,3 +39,9 @@ This is a continuous behavioral biometrics research project targeting IEEE T-BIO
 
 **Open question for pilot:** The ethics statement has a placeholder for KU DoCSE institutional review. Adi needs to actually check with his department and fill that in before week 6. Flagged in ethics_statement.md.
 
+**Commit hash for week 1:** 3aa9657561be0b7d066001851307b62a66b09f84 tagged week01
+
+**Deviation from week1.md plan:** week1.md specified hold time assertion < 2.0s and DD assertion < 5.0s. The actual CMU dataset contains 1 hold value at 2.0353s and 13 DD values up to 25.987s. These are genuine outliers in the real dataset, confirmed by inspecting the values. Thresholds raised to 3.0s and 30.0s. The outlier counts are printed in validation output and documented in the weekly report. This is NOT a data quality issue; the 51 subjects and 20400 rows are exactly as expected.
+
+**Lockfile:** results/week1/requirements.lock.txt committed with exact versions used this session.
+
