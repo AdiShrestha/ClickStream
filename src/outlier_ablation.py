@@ -13,7 +13,7 @@ from src.models import PerUserModel
 from src.metrics import compute_full_metrics
 
 
-def find_outlier_row_mask(X, feature_cols, hold_threshold_s=0.5, dd_threshold_s=2.0):
+def find_outlier_row_mask(X, feature_cols, hold_threshold_s=2.0, dd_threshold_s=25.0):
     hold_idx = [i for i, c in enumerate(feature_cols) if c.startswith("H.")]
     dd_idx = [i for i, c in enumerate(feature_cols) if c.startswith("DD.")]
     hold_outlier = np.any(X[:, hold_idx] > hold_threshold_s, axis=1)

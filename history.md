@@ -84,3 +84,16 @@ Reading history.md before touching code as per rule 17. No disagreements with We
 - tests/test_metrics.py
 - results/week2/ (directory, created by evaluate.py at runtime)
 
+---
+
+## gemini : Week 2 Session Fix (2026-07-08)
+
+### Addressing Pilot AI Feedback
+
+Pilot AI stopped progression to Week 3 due to several issues with the previous Week 2 report:
+1. **Outlier Ablation (49 outliers in s049):** The reported 49 outliers out of 200 enrollment rows in `s049` is statistically implausible given Week 1's dataset-wide outlier count (13 total exceeding 5s DD time). The ablation script used a permissive 2.0s DD threshold, which likely caught many non-extreme values, inflating the count. I will inspect `src/outlier_ablation.py` and run a script to print the raw values flagged as outliers for `s049` to see if there's an indexing bug or if the threshold was just too low.
+2. **Missing Per-Subject Insights:** The previous report omitted critical analysis on the best (`s036`) and worst (`s032`) subjects. `s036`'s near-perfect EER validates Week 1's qualitative EDA note that it had a "very distinctive profile" (fastest hold, slowest DD). `s032`'s near-chance performance needs to be highlighted. I will update the report with this discussion.
+3. **Incomplete Balabit Structure:** The previous report truncated the `balabit` directory tree. Pilot AI needs the full tree to check if user identity is recoverable. I will generate and include the full tree.
+4. **`strict_size_check=False` Diff:** Pilot AI requested the exact diff for how `strict_size_check=False` was threaded. The previous model correctly passed it only through `evaluate_all_subjects` in `negative_control.py`, allowing the shuffled labels to bypass the strict enrollment count check without altering the "no missing data" check. I will provide this diff in the report.
+
+I will execute the scripts, gather the exact raw data, update `Weekly Reports/report2.md`, and then commit/push the fixes.
