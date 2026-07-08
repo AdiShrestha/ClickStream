@@ -45,3 +45,42 @@ This is a continuous behavioral biometrics research project targeting IEEE T-BIO
 
 **Lockfile:** results/week1/requirements.lock.txt committed with exact versions used this session.
 
+
+---
+
+## claude : Week 2 Session Start (2026-07-08)
+
+### Key decisions carried over from Week 1
+
+Reading history.md before touching code as per rule 17. No disagreements with Week 1 decisions. Continuing.
+
+### Architecture and design decisions for Week 2
+
+**Import convention change:** Week1 used sys.path.insert hacks to allow `python src/eda.py`. Week2 drops this entirely. All modules now use `from src.X import Y` and are run as `python -m src.MODULE` from the repo root. This is cleaner and standard. The Week 1 eda.py sys.path trick is left in place for now since it works and there is no reason to touch working Week 1 code.
+
+**RobustScaler over StandardScaler:** Confirmed decision by pilot. Week 1 found real outliers (H.a max 2.035s, DD.i.e max 25.987s). StandardScaler's mean and std are pulled by these; RobustScaler uses median/IQR and is far less distorted. This is applied in PerUserModel for both IF and OC-SVM.
+
+**Temporal split design:** Enroll on sessions 1-4 (200 reps per subject), test on sessions 5-8. Genuine test: same subject sessions 5-8. Impostor test: ALL other subjects sessions 5-8. This is the right framing for verification (1:1), not LOSO which is for population classifiers. Internal consistency assertions (not hardcoded counts) make splits.py reusable for Balabit later.
+
+**Split correctness is the critical property this week:** The leakage test in test_splits.py uses a synthetic dataset where feature value == subject index, so if subject s0's data ever appears in s0's impostor set, the assertion catches it directly. This is more reliable than trusting the logic by inspection.
+
+**Two separate negative controls for two different bug classes:** (1) metrics sanity on synthetic data catches bugs IN the metrics code independently of any model. (2) shuffled subject labels on real data catches leakage in the pipeline. Both must pass before any real result is trusted.
+
+**Balabit: inspect-first, not parse-first.** Agreed with pilot. Clone the repo, print the actual structure and sample CSV headers. Do not write a parser this week. Parser is written in Week 3 once real format is confirmed.
+
+**Outlier ablation for s049:** Week 1 raised whether the 2.035s outlier in s049 enrollment sessions actually affects the model. This week runs a concrete before/after comparison. The result goes in the weekly report as raw numbers, not a hunch.
+
+**No new pip dependencies.** All packages already in requirements.txt from Week 1: scikit-learn>=1.5 covers IsolationForest, OneClassSVM, RobustScaler, roc_auc_score, average_precision_score, roc_curve.
+
+**Files to create this session:**
+- src/splits.py
+- src/models.py
+- src/metrics.py
+- src/evaluate.py
+- src/negative_control.py
+- src/outlier_ablation.py
+- src/balabit_acquisition.py
+- tests/test_splits.py
+- tests/test_metrics.py
+- results/week2/ (directory, created by evaluate.py at runtime)
+
