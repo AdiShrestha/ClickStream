@@ -25,6 +25,9 @@ source .venv/bin/activate        # on macOS/Linux
 pip install -r requirements.txt
 ```
 
+*(Note: Starting Week 3, PyTorch is required. It is listed in `requirements.txt`, but if you need a specific GPU build (e.g., CUDA), install it directly via the [PyTorch website](https://pytorch.org/get-started/locally/) instructions before running the other requirements).*
+
+
 ## Step 3: Download and validate the CMU dataset
 
 ```bash
