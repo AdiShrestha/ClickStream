@@ -1,0 +1,1175 @@
+{
+  "s002": {
+    "attacker": "s046",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 14,
+      "accept_rate_victim_before": 0.78,
+      "accept_rate_victim_after": 0.78,
+      "accept_rate_attacker_before": 0.535,
+      "accept_rate_attacker_after": 0.545,
+      "attacker_acceptance_delta": 0.010000000000000009,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.78,
+      "accept_rate_victim_after": 0.765,
+      "accept_rate_attacker_before": 0.535,
+      "accept_rate_attacker_after": 0.53,
+      "attacker_acceptance_delta": -0.0050000000000000044,
+      "victim_acceptance_delta": -0.015000000000000013
+    }
+  },
+  "s003": {
+    "attacker": "s035",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 12,
+      "accept_rate_victim_before": 0.87,
+      "accept_rate_victim_after": 0.87,
+      "accept_rate_attacker_before": 0.25,
+      "accept_rate_attacker_after": 0.32,
+      "attacker_acceptance_delta": 0.07,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 11,
+      "accept_rate_victim_before": 0.87,
+      "accept_rate_victim_after": 0.86,
+      "accept_rate_attacker_before": 0.25,
+      "accept_rate_attacker_after": 0.325,
+      "attacker_acceptance_delta": 0.07500000000000001,
+      "victim_acceptance_delta": -0.010000000000000009
+    }
+  },
+  "s004": {
+    "attacker": "s020",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 15,
+      "accept_rate_victim_before": 0.965,
+      "accept_rate_victim_after": 0.96,
+      "accept_rate_attacker_before": 0.445,
+      "accept_rate_attacker_after": 0.38,
+      "attacker_acceptance_delta": -0.065,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.965,
+      "accept_rate_victim_after": 0.97,
+      "accept_rate_attacker_before": 0.445,
+      "accept_rate_attacker_after": 0.43,
+      "attacker_acceptance_delta": -0.015000000000000013,
+      "victim_acceptance_delta": 0.0050000000000000044
+    }
+  },
+  "s005": {
+    "attacker": "s050",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 15,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.995,
+      "accept_rate_attacker_before": 0.84,
+      "accept_rate_attacker_after": 0.795,
+      "attacker_acceptance_delta": -0.04499999999999993,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.995,
+      "accept_rate_attacker_before": 0.84,
+      "accept_rate_attacker_after": 0.84,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s007": {
+    "attacker": "s012",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 8,
+      "accept_rate_victim_before": 0.91,
+      "accept_rate_victim_after": 0.9,
+      "accept_rate_attacker_before": 0.01,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": -0.01,
+      "victim_acceptance_delta": -0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 13,
+      "accept_rate_victim_before": 0.91,
+      "accept_rate_victim_after": 0.945,
+      "accept_rate_attacker_before": 0.01,
+      "accept_rate_attacker_after": 0.025,
+      "attacker_acceptance_delta": 0.015000000000000001,
+      "victim_acceptance_delta": 0.03499999999999992
+    }
+  },
+  "s008": {
+    "attacker": "s027",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 14,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.96,
+      "accept_rate_attacker_before": 0.245,
+      "accept_rate_attacker_after": 0.315,
+      "attacker_acceptance_delta": 0.07,
+      "victim_acceptance_delta": -0.015000000000000013
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.975,
+      "accept_rate_attacker_before": 0.245,
+      "accept_rate_attacker_after": 0.3,
+      "attacker_acceptance_delta": 0.05499999999999999,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s010": {
+    "attacker": "s046",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 5,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.995,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.005,
+      "attacker_acceptance_delta": 0.005,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.995,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s011": {
+    "attacker": "s025",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 14,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.965,
+      "accept_rate_attacker_before": 0.275,
+      "accept_rate_attacker_after": 0.415,
+      "attacker_acceptance_delta": 0.13999999999999996,
+      "victim_acceptance_delta": -0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.98,
+      "accept_rate_attacker_before": 0.275,
+      "accept_rate_attacker_after": 0.29,
+      "attacker_acceptance_delta": 0.014999999999999958,
+      "victim_acceptance_delta": 0.0050000000000000044
+    }
+  },
+  "s012": {
+    "attacker": "s029",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 1.0,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.82,
+      "accept_rate_attacker_after": 0.875,
+      "attacker_acceptance_delta": 0.05500000000000005,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 1.0,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.82,
+      "accept_rate_attacker_after": 0.545,
+      "attacker_acceptance_delta": -0.2749999999999999,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s013": {
+    "attacker": "s016",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 4,
+      "accept_rate_victim_before": 0.93,
+      "accept_rate_victim_after": 0.925,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.93,
+      "accept_rate_victim_after": 0.915,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": -0.015000000000000013
+    }
+  },
+  "s015": {
+    "attacker": "s016",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 8,
+      "accept_rate_victim_before": 0.97,
+      "accept_rate_victim_after": 0.955,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": -0.015000000000000013
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.97,
+      "accept_rate_victim_after": 0.95,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": -0.020000000000000018
+    }
+  },
+  "s016": {
+    "attacker": "s030",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 12,
+      "accept_rate_victim_before": 0.9,
+      "accept_rate_victim_after": 0.88,
+      "accept_rate_attacker_before": 0.27,
+      "accept_rate_attacker_after": 0.155,
+      "attacker_acceptance_delta": -0.11500000000000002,
+      "victim_acceptance_delta": -0.020000000000000018
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 8,
+      "accept_rate_victim_before": 0.9,
+      "accept_rate_victim_after": 0.895,
+      "accept_rate_attacker_before": 0.27,
+      "accept_rate_attacker_after": 0.275,
+      "attacker_acceptance_delta": 0.0050000000000000044,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s017": {
+    "attacker": "s042",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 5,
+      "accept_rate_victim_before": 0.965,
+      "accept_rate_victim_after": 0.96,
+      "accept_rate_attacker_before": 0.06,
+      "accept_rate_attacker_after": 0.035,
+      "attacker_acceptance_delta": -0.024999999999999994,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.965,
+      "accept_rate_victim_after": 0.96,
+      "accept_rate_attacker_before": 0.06,
+      "accept_rate_attacker_after": 0.025,
+      "attacker_acceptance_delta": -0.034999999999999996,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s018": {
+    "attacker": "s047",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 14,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.535,
+      "accept_rate_attacker_after": 0.45,
+      "attacker_acceptance_delta": -0.08500000000000002,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.535,
+      "accept_rate_attacker_after": 0.39,
+      "attacker_acceptance_delta": -0.14500000000000002,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s019": {
+    "attacker": "s030",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 8,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.195,
+      "accept_rate_attacker_after": 0.175,
+      "attacker_acceptance_delta": -0.020000000000000018,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.195,
+      "accept_rate_attacker_after": 0.145,
+      "attacker_acceptance_delta": -0.05000000000000002,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s020": {
+    "attacker": "s004",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.985,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.995,
+      "accept_rate_attacker_after": 0.985,
+      "attacker_acceptance_delta": -0.010000000000000009,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.985,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.995,
+      "accept_rate_attacker_after": 0.985,
+      "attacker_acceptance_delta": -0.010000000000000009,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s021": {
+    "attacker": "s028",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 14,
+      "accept_rate_victim_before": 0.945,
+      "accept_rate_victim_after": 0.935,
+      "accept_rate_attacker_before": 0.215,
+      "accept_rate_attacker_after": 0.335,
+      "attacker_acceptance_delta": 0.12000000000000002,
+      "victim_acceptance_delta": -0.009999999999999898
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 16,
+      "accept_rate_victim_before": 0.945,
+      "accept_rate_victim_after": 0.92,
+      "accept_rate_attacker_before": 0.215,
+      "accept_rate_attacker_after": 0.125,
+      "attacker_acceptance_delta": -0.09,
+      "victim_acceptance_delta": -0.02499999999999991
+    }
+  },
+  "s022": {
+    "attacker": "s003",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 4,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.99,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.98,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": -0.010000000000000009
+    }
+  },
+  "s024": {
+    "attacker": "s030",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 4,
+      "accept_rate_victim_before": 1.0,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 1.0,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s025": {
+    "attacker": "s051",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 15,
+      "accept_rate_victim_before": 0.935,
+      "accept_rate_victim_after": 0.935,
+      "accept_rate_attacker_before": 0.745,
+      "accept_rate_attacker_after": 0.59,
+      "attacker_acceptance_delta": -0.15500000000000003,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.935,
+      "accept_rate_victim_after": 0.935,
+      "accept_rate_attacker_before": 0.745,
+      "accept_rate_attacker_after": 0.775,
+      "attacker_acceptance_delta": 0.030000000000000027,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s026": {
+    "attacker": "s036",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 2,
+      "accept_rate_victim_before": 0.955,
+      "accept_rate_victim_after": 0.955,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.955,
+      "accept_rate_victim_after": 0.955,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s027": {
+    "attacker": "s044",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 13,
+      "accept_rate_victim_before": 0.96,
+      "accept_rate_victim_after": 0.97,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.035,
+      "attacker_acceptance_delta": 0.035,
+      "victim_acceptance_delta": 0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.96,
+      "accept_rate_victim_after": 0.96,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s028": {
+    "attacker": "s003",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 5,
+      "accept_rate_victim_before": 0.945,
+      "accept_rate_victim_after": 0.95,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.945,
+      "accept_rate_victim_after": 0.95,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0050000000000000044
+    }
+  },
+  "s029": {
+    "attacker": "s026",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 16,
+      "accept_rate_victim_before": 0.915,
+      "accept_rate_victim_after": 0.905,
+      "accept_rate_attacker_before": 0.47,
+      "accept_rate_attacker_after": 0.515,
+      "attacker_acceptance_delta": 0.04500000000000004,
+      "victim_acceptance_delta": -0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.915,
+      "accept_rate_victim_after": 0.925,
+      "accept_rate_attacker_before": 0.47,
+      "accept_rate_attacker_after": 0.485,
+      "attacker_acceptance_delta": 0.015000000000000013,
+      "victim_acceptance_delta": 0.010000000000000009
+    }
+  },
+  "s030": {
+    "attacker": "s039",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.975,
+      "accept_rate_attacker_before": 0.91,
+      "accept_rate_attacker_after": 0.94,
+      "attacker_acceptance_delta": 0.029999999999999916,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.98,
+      "accept_rate_attacker_before": 0.91,
+      "accept_rate_attacker_after": 0.9,
+      "attacker_acceptance_delta": -0.010000000000000009,
+      "victim_acceptance_delta": 0.0050000000000000044
+    }
+  },
+  "s031": {
+    "attacker": "s016",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 7,
+      "accept_rate_victim_before": 0.955,
+      "accept_rate_victim_after": 0.95,
+      "accept_rate_attacker_before": 0.165,
+      "accept_rate_attacker_after": 0.16,
+      "attacker_acceptance_delta": -0.0050000000000000044,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 15,
+      "accept_rate_victim_before": 0.955,
+      "accept_rate_victim_after": 0.955,
+      "accept_rate_attacker_before": 0.165,
+      "accept_rate_attacker_after": 0.095,
+      "attacker_acceptance_delta": -0.07,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s032": {
+    "attacker": "s027",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.85,
+      "accept_rate_victim_after": 0.84,
+      "accept_rate_attacker_before": 0.73,
+      "accept_rate_attacker_after": 0.73,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": -0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.85,
+      "accept_rate_victim_after": 0.87,
+      "accept_rate_attacker_before": 0.73,
+      "accept_rate_attacker_after": 0.725,
+      "attacker_acceptance_delta": -0.0050000000000000044,
+      "victim_acceptance_delta": 0.020000000000000018
+    }
+  },
+  "s033": {
+    "attacker": "s051",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 15,
+      "accept_rate_victim_before": 0.955,
+      "accept_rate_victim_after": 0.95,
+      "accept_rate_attacker_before": 0.595,
+      "accept_rate_attacker_after": 0.295,
+      "attacker_acceptance_delta": -0.3,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.955,
+      "accept_rate_victim_after": 0.965,
+      "accept_rate_attacker_before": 0.595,
+      "accept_rate_attacker_after": 0.725,
+      "attacker_acceptance_delta": 0.13,
+      "victim_acceptance_delta": 0.010000000000000009
+    }
+  },
+  "s034": {
+    "attacker": "s030",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 9,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.995,
+      "accept_rate_attacker_before": 0.295,
+      "accept_rate_attacker_after": 0.275,
+      "attacker_acceptance_delta": -0.019999999999999962,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.99,
+      "accept_rate_attacker_before": 0.295,
+      "accept_rate_attacker_after": 0.265,
+      "attacker_acceptance_delta": -0.02999999999999997,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s035": {
+    "attacker": "s056",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 13,
+      "accept_rate_victim_before": 0.87,
+      "accept_rate_victim_after": 0.89,
+      "accept_rate_attacker_before": 0.26,
+      "accept_rate_attacker_after": 0.31,
+      "attacker_acceptance_delta": 0.04999999999999999,
+      "victim_acceptance_delta": 0.020000000000000018
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 14,
+      "accept_rate_victim_before": 0.87,
+      "accept_rate_victim_after": 0.865,
+      "accept_rate_attacker_before": 0.26,
+      "accept_rate_attacker_after": 0.215,
+      "attacker_acceptance_delta": -0.04500000000000001,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s036": {
+    "attacker": "s032",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 4,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.99,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.99,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s037": {
+    "attacker": "s049",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 6,
+      "accept_rate_victim_before": 0.965,
+      "accept_rate_victim_after": 0.965,
+      "accept_rate_attacker_before": 0.01,
+      "accept_rate_attacker_after": 0.01,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.965,
+      "accept_rate_victim_after": 0.97,
+      "accept_rate_attacker_before": 0.01,
+      "accept_rate_attacker_after": 0.015,
+      "attacker_acceptance_delta": 0.004999999999999999,
+      "victim_acceptance_delta": 0.0050000000000000044
+    }
+  },
+  "s038": {
+    "attacker": "s033",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 8,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.995,
+      "accept_rate_attacker_before": 0.01,
+      "accept_rate_attacker_after": 0.005,
+      "attacker_acceptance_delta": -0.005,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.995,
+      "accept_rate_attacker_before": 0.01,
+      "accept_rate_attacker_after": 0.005,
+      "attacker_acceptance_delta": -0.005,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s039": {
+    "attacker": "s020",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 9,
+      "accept_rate_victim_before": 0.97,
+      "accept_rate_victim_after": 0.965,
+      "accept_rate_attacker_before": 0.12,
+      "accept_rate_attacker_after": 0.015,
+      "attacker_acceptance_delta": -0.105,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.97,
+      "accept_rate_victim_after": 0.96,
+      "accept_rate_attacker_before": 0.12,
+      "accept_rate_attacker_after": 0.08,
+      "attacker_acceptance_delta": -0.039999999999999994,
+      "victim_acceptance_delta": -0.010000000000000009
+    }
+  },
+  "s040": {
+    "attacker": "s019",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.955,
+      "accept_rate_victim_after": 0.965,
+      "accept_rate_attacker_before": 0.845,
+      "accept_rate_attacker_after": 0.875,
+      "attacker_acceptance_delta": 0.030000000000000027,
+      "victim_acceptance_delta": 0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.955,
+      "accept_rate_victim_after": 0.95,
+      "accept_rate_attacker_before": 0.845,
+      "accept_rate_attacker_after": 0.865,
+      "attacker_acceptance_delta": 0.020000000000000018,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s041": {
+    "attacker": "s054",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.965,
+      "accept_rate_victim_after": 0.975,
+      "accept_rate_attacker_before": 0.86,
+      "accept_rate_attacker_after": 0.9,
+      "attacker_acceptance_delta": 0.040000000000000036,
+      "victim_acceptance_delta": 0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.965,
+      "accept_rate_victim_after": 0.965,
+      "accept_rate_attacker_before": 0.86,
+      "accept_rate_attacker_after": 0.855,
+      "attacker_acceptance_delta": -0.0050000000000000044,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s042": {
+    "attacker": "s051",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 15,
+      "accept_rate_victim_before": 1.0,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.635,
+      "accept_rate_attacker_after": 0.475,
+      "attacker_acceptance_delta": -0.16000000000000003,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 1.0,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.635,
+      "accept_rate_attacker_after": 0.685,
+      "attacker_acceptance_delta": 0.050000000000000044,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s043": {
+    "attacker": "s004",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 4,
+      "accept_rate_victim_before": 0.985,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.985,
+      "accept_rate_victim_after": 0.99,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0050000000000000044
+    }
+  },
+  "s044": {
+    "attacker": "s042",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 9,
+      "accept_rate_victim_before": 0.985,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.795,
+      "accept_rate_attacker_after": 0.635,
+      "attacker_acceptance_delta": -0.16000000000000003,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.985,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.795,
+      "accept_rate_attacker_after": 0.75,
+      "attacker_acceptance_delta": -0.04500000000000004,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s046": {
+    "attacker": "s010",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 1.0,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.99,
+      "accept_rate_attacker_after": 0.985,
+      "attacker_acceptance_delta": -0.0050000000000000044,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 1.0,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.99,
+      "accept_rate_attacker_after": 0.995,
+      "attacker_acceptance_delta": 0.0050000000000000044,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s047": {
+    "attacker": "s026",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.935,
+      "accept_rate_victim_after": 0.915,
+      "accept_rate_attacker_before": 0.99,
+      "accept_rate_attacker_after": 0.985,
+      "attacker_acceptance_delta": -0.0050000000000000044,
+      "victim_acceptance_delta": -0.020000000000000018
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.935,
+      "accept_rate_victim_after": 0.96,
+      "accept_rate_attacker_before": 0.99,
+      "accept_rate_attacker_after": 0.99,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.02499999999999991
+    }
+  },
+  "s048": {
+    "attacker": "s012",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 11,
+      "accept_rate_victim_before": 0.985,
+      "accept_rate_victim_after": 0.98,
+      "accept_rate_attacker_before": 0.025,
+      "accept_rate_attacker_after": 0.03,
+      "attacker_acceptance_delta": 0.0049999999999999975,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.985,
+      "accept_rate_victim_after": 0.98,
+      "accept_rate_attacker_before": 0.025,
+      "accept_rate_attacker_after": 0.025,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s049": {
+    "attacker": "s044",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.9,
+      "accept_rate_attacker_after": 0.66,
+      "attacker_acceptance_delta": -0.24,
+      "victim_acceptance_delta": -0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.995,
+      "accept_rate_victim_after": 0.99,
+      "accept_rate_attacker_before": 0.9,
+      "accept_rate_attacker_after": 0.68,
+      "attacker_acceptance_delta": -0.21999999999999997,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s050": {
+    "attacker": "s022",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 4,
+      "accept_rate_victim_before": 0.945,
+      "accept_rate_victim_after": 0.95,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.945,
+      "accept_rate_victim_after": 0.945,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s051": {
+    "attacker": "s005",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 7,
+      "accept_rate_victim_before": 0.945,
+      "accept_rate_victim_after": 0.955,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 16,
+      "accept_rate_victim_before": 0.945,
+      "accept_rate_victim_after": 0.975,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.030000000000000027
+    }
+  },
+  "s052": {
+    "attacker": "s030",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 5,
+      "accept_rate_victim_before": 0.98,
+      "accept_rate_victim_after": 0.98,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.98,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.0,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": 0.0,
+      "victim_acceptance_delta": 0.0050000000000000044
+    }
+  },
+  "s053": {
+    "attacker": "s018",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 12,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.985,
+      "accept_rate_attacker_before": 0.21,
+      "accept_rate_attacker_after": 0.165,
+      "attacker_acceptance_delta": -0.044999999999999984,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.99,
+      "accept_rate_attacker_before": 0.21,
+      "accept_rate_attacker_after": 0.19,
+      "attacker_acceptance_delta": -0.01999999999999999,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s054": {
+    "attacker": "s057",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 1.0,
+      "accept_rate_attacker_before": 0.925,
+      "accept_rate_attacker_after": 0.95,
+      "attacker_acceptance_delta": 0.02499999999999991,
+      "victim_acceptance_delta": 0.010000000000000009
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 20,
+      "accept_rate_victim_before": 0.99,
+      "accept_rate_victim_after": 0.995,
+      "accept_rate_attacker_before": 0.925,
+      "accept_rate_attacker_after": 0.945,
+      "attacker_acceptance_delta": 0.019999999999999907,
+      "victim_acceptance_delta": 0.0050000000000000044
+    }
+  },
+  "s055": {
+    "attacker": "s012",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 6,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.975,
+      "accept_rate_attacker_before": 0.005,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": -0.005,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 19,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.975,
+      "accept_rate_attacker_before": 0.005,
+      "accept_rate_attacker_after": 0.0,
+      "attacker_acceptance_delta": -0.005,
+      "victim_acceptance_delta": 0.0
+    }
+  },
+  "s056": {
+    "attacker": "s031",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 9,
+      "accept_rate_victim_before": 0.98,
+      "accept_rate_victim_after": 0.98,
+      "accept_rate_attacker_before": 0.505,
+      "accept_rate_attacker_after": 0.48,
+      "attacker_acceptance_delta": -0.025000000000000022,
+      "victim_acceptance_delta": 0.0
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 18,
+      "accept_rate_victim_before": 0.98,
+      "accept_rate_victim_after": 0.975,
+      "accept_rate_attacker_before": 0.505,
+      "accept_rate_attacker_after": 0.45,
+      "attacker_acceptance_delta": -0.05499999999999999,
+      "victim_acceptance_delta": -0.0050000000000000044
+    }
+  },
+  "s057": {
+    "attacker": "s003",
+    "attack": {
+      "n_rounds": 20,
+      "n_absorbed": 12,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.97,
+      "accept_rate_attacker_before": 0.285,
+      "accept_rate_attacker_after": 0.1,
+      "attacker_acceptance_delta": -0.18499999999999997,
+      "victim_acceptance_delta": -0.0050000000000000044
+    },
+    "benign_control": {
+      "n_rounds": 20,
+      "n_absorbed": 17,
+      "accept_rate_victim_before": 0.975,
+      "accept_rate_victim_after": 0.975,
+      "accept_rate_attacker_before": 0.285,
+      "accept_rate_attacker_after": 0.185,
+      "attacker_acceptance_delta": -0.09999999999999998,
+      "victim_acceptance_delta": 0.0
+    }
+  }
+}
