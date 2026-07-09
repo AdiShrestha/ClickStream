@@ -125,7 +125,9 @@ def main():
     ordered_keys = reconstruct_key_sequence_order(feature_cols)
     all_subjects = sorted(np.unique(subjects).tolist())
     
-    seeds_to_test = [0, 1, 2]
+    seeds_to_test = list(range(10))
+    
+    improvements = []
     
     for seed in seeds_to_test:
         print(f"\n--- Running evaluation for seed {seed} ---")
@@ -147,7 +149,12 @@ def main():
         
         enc_metrics = train_and_eval_encoder(X_seq_scaled, subjects, sessions, bg_subjs, ho_subjs, seed)
         print(f"Encoder Pooled EER: {enc_metrics['eer']:.4f}")
-        print(f"Improvement:        {if_metrics['eer'] - enc_metrics['eer']:.4f} ({((if_metrics['eer'] - enc_metrics['eer']) / if_metrics['eer']) * 100:.1f}%)")
+        improvement = if_metrics['eer'] - enc_metrics['eer']
+        improvements.append(improvement)
+        print(f"Improvement:        {improvement:.4f} ({((improvement) / if_metrics['eer']) * 100:.1f}%)")
+
+    print("\n=== Summary over 10 seeds ===")
+    print(f"Mean improvement: {np.mean(improvements):.4f} (std: {np.std(improvements):.4f})")
 
 if __name__ == "__main__":
     main()

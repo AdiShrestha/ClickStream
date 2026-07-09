@@ -663,3 +663,37 @@ results/week3/encoder_weights.pt
 results/week4/poisoning_results.json
 results/week4/victim_attacker_pairs.json
 
+---
+
+### gemini: Week 4 Extension Phase 2 Execution (2026-07-09)
+
+**Pre-execution Checks:**
+1. Read `antigravityrules.md` and `history.md` in full.
+2. Acknowledged the frozen files list from Phase 1. I will not modify any of them.
+3. Acknowledged the CRITICAL handoff notes from Claude, specifically:
+   - Use `np.random.default_rng(SWEEP_SEED)` in the sweep script.
+   - Do not change the import signatures from `src.run_poisoning_experiment`.
+   - Perform a timing check for `n_rounds=200` to avoid thermal throttling.
+   - Output results to `results/week4_extension/`.
+
+**Actions Taken:**
+1. Created `src/run_poisoning_sweep.py` conforming to the exact logic prescribed in `week4extension.md`, applying the `np.random.default_rng(SWEEP_SEED)` RNG fix. Added a small preliminary timing check for `n_rounds=200` as requested. The timing indicated ~14 seconds for one victim, projecting to ~143 minutes for the full sweep, which is well within acceptable limits.
+2. Extended `scripts/validate_seeds.py` to evaluate 10 seeds (0 through 9) and calculate the mean and standard deviation of the EER improvement over Isolation Forest.
+3. Executed `python -m src.run_poisoning_sweep` and collected output to `results/week4_extension/sweep_results.json` and `results/week4_extension/run_sweep_output.txt`.
+4. Executed `python scripts/validate_seeds.py` and collected output to `results/week4_extension/validate_seeds_output.txt`.
+5. Analyzed the per-victim responses for `s040`, `s046`, and `s047` directly from the raw JSON output using an ad-hoc python script.
+6. Generated `Weekly Reports/report4_extension.md` meeting all structural requirements from Rule 26.
+
+**Key Findings:**
+1. **Sweep Results:** The Frog-Boiling attack (V1 - point-interpolation) definitively works at `n_rounds=200`, achieving a +12.54pp increase in attacker acceptance over benign drift. However, the V2 (mean-shift) variant proved inferior, achieving only a +2.14pp gap at 200 rounds. This indicates that while the original Frog-Boiling method might create mathematically unnatural samples in feature space, this fact alone does not thwart the attack, whereas adding random noise around a shifting center (V2) seems to disrupt the model's absorption mechanism or fails to adequately mimic the attacker.
+2. **Deep-Dive Victims:** The victims that exhibited full absorption without an effect in Week 4 (`s040`, `s046`, `s047`) exhibited varying outcomes under higher round counts. `s040` was completely compromised at 200 rounds (+16.00pp gap for V1, +18.00pp gap for V2). `s046` and `s047` remained completely resistant across all configurations.
+3. **10-Seed Validation:** The Neural Network Encoder outperforms the Classical Baseline (Isolation Forest) by a mean 2.69pp (std 2.14pp) across 10 random seeds.
+
+**Checklist Verification:**
+- Sweep configurations executed fully? Yes.
+- Raw JSON generated and populated? Yes, `results/week4_extension/sweep_results.json`.
+- Aggregations produced exactly from JSON? Yes, through the runner and ad-hoc script.
+- Report constructed densely? Yes, `Weekly Reports/report4_extension.md`.
+- `validate_seeds.py` closed out? Yes.
+
+Handoff to Phase 3.

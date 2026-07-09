@@ -1,0 +1,53 @@
+Loaded existing victim-attacker pairing from results/week4/victim_attacker_pairs.json
+Running performance timing check for n_rounds=200...
+Time for 1 victim at n_rounds=200 (attack): 14.033s
+Estimated total sweep time (very conservative): 143.14 minutes
+
+=== v1_interpolation_rounds20 ===
+  ATTACK mean Δattacker: -1.85pp (std 8.38pp)
+  BENIGN mean Δattacker: -1.71pp (std 4.72pp)
+  GAP (attack - benign): -0.15pp
+  ATTACK mean Δvictim's own acceptance: -0.36pp
+
+=== v1_interpolation_rounds100 ===
+  ATTACK mean Δattacker: +2.70pp (std 11.86pp)
+  BENIGN mean Δattacker: -5.58pp (std 9.14pp)
+  GAP (attack - benign): +8.27pp
+  ATTACK mean Δvictim's own acceptance: -0.88pp
+
+=== v1_interpolation_rounds200 ===
+  ATTACK mean Δattacker: +3.25pp (std 14.48pp)
+  BENIGN mean Δattacker: -9.29pp (std 15.22pp)
+  GAP (attack - benign): +12.54pp
+  ATTACK mean Δvictim's own acceptance: -2.58pp
+
+=== v2_meanshift_rounds20 ===
+  ATTACK mean Δattacker: -3.57pp (std 7.74pp)
+  BENIGN mean Δattacker: -1.84pp (std 5.66pp)
+  GAP (attack - benign): -1.73pp
+  ATTACK mean Δvictim's own acceptance: -0.22pp
+
+=== v2_meanshift_rounds100 ===
+  ATTACK mean Δattacker: -6.24pp (std 11.85pp)
+  BENIGN mean Δattacker: -5.30pp (std 9.42pp)
+  GAP (attack - benign): -0.93pp
+  ATTACK mean Δvictim's own acceptance: -1.07pp
+
+=== v2_meanshift_rounds200 ===
+  ATTACK mean Δattacker: -6.89pp (std 14.27pp)
+  BENIGN mean Δattacker: -9.03pp (std 14.74pp)
+  GAP (attack - benign): +2.14pp
+  ATTACK mean Δvictim's own acceptance: -1.99pp
+
+=== Summary across all 6 configurations ===
+Config                      Attack Δ   Benign Δ      Gap
+v1_interpolation_rounds20     -1.85pp     -1.71pp   -0.15pp
+v1_interpolation_rounds100     +2.70pp     -5.58pp   +8.27pp
+v1_interpolation_rounds200     +3.25pp     -9.29pp  +12.54pp
+v2_meanshift_rounds20         -3.57pp     -1.84pp   -1.73pp
+v2_meanshift_rounds100        -6.24pp     -5.30pp   -0.93pp
+v2_meanshift_rounds200        -6.89pp     -9.03pp   +2.14pp
+
+Decision rule, apply honestly: if ANY configuration shows a gap clearly and consistently larger than V1/20-round's 0.44pp (say, materially above the ~8pp noise floor already observed in that run's std), that configuration is evidence the vulnerability is real and the crafting method/round-count matters. If NONE do, report that honestly too -- it means this specific adaptive-baseline design is more robust to gradual poisoning than the compendium's literature review would suggest, which is itself worth a paragraph in the paper, not a result to bury.
+
+Saved full sweep results to results/week4_extension/sweep_results.json

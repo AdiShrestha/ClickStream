@@ -1,0 +1,54 @@
+Loading data...
+
+--- Running evaluation for seed 0 ---
+IF Pooled EER:      0.1492
+Encoder Pooled EER: 0.1427
+Improvement:        0.0065 (4.4%)
+
+--- Running evaluation for seed 1 ---
+IF Pooled EER:      0.1843
+Encoder Pooled EER: 0.1267
+Improvement:        0.0576 (31.3%)
+
+--- Running evaluation for seed 2 ---
+IF Pooled EER:      0.1716
+Encoder Pooled EER: 0.1550
+Improvement:        0.0166 (9.7%)
+
+--- Running evaluation for seed 3 ---
+IF Pooled EER:      0.1360
+Encoder Pooled EER: 0.1420
+Improvement:        -0.0060 (-4.4%)
+
+--- Running evaluation for seed 4 ---
+IF Pooled EER:      0.1454
+Encoder Pooled EER: 0.1396
+Improvement:        0.0058 (4.0%)
+
+--- Running evaluation for seed 5 ---
+IF Pooled EER:      0.1203
+Encoder Pooled EER: 0.0950
+Improvement:        0.0254 (21.1%)
+
+--- Running evaluation for seed 6 ---
+IF Pooled EER:      0.1950
+Encoder Pooled EER: 0.1314
+Improvement:        0.0636 (32.6%)
+
+--- Running evaluation for seed 7 ---
+IF Pooled EER:      0.1930
+Encoder Pooled EER: 0.1576
+Improvement:        0.0355 (18.4%)
+
+--- Running evaluation for seed 8 ---
+IF Pooled EER:      0.1893
+Encoder Pooled EER: 0.1646
+Improvement:        0.0247 (13.1%)
+
+--- Running evaluation for seed 9 ---
+IF Pooled EER:      0.1930
+Encoder Pooled EER: 0.1533
+Improvement:        0.0396 (20.5%)
+
+=== Summary over 10 seeds ===
+Mean improvement: 0.0269 (std: 0.0214)
