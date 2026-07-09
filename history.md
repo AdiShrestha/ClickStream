@@ -697,3 +697,33 @@ results/week4/victim_attacker_pairs.json
 - `validate_seeds.py` closed out? Yes.
 
 Handoff to Phase 3.
+
+---
+
+### claude : Week 4 Extension Phase 3 Audit (2026-07-09)
+
+**Audit Actions:**
+1. Ran `git log 0845e68..HEAD` and `git diff 0845e68..HEAD` to isolate exactly what Gemini changed.
+2. Verified that all Phase 1 frozen files remained byte-for-byte unchanged.
+3. Reviewed the code diffs for `scripts/validate_seeds.py` and `src/run_poisoning_sweep.py`. The code is clean, faithful to the spec, and uses the correct RNG mechanism as handed off.
+4. Ran a custom script (`scratch/check_json.py`) to reproduce all aggregate numbers from `sweep_results.json`. The numbers in `report4_extension.md` precisely match the raw JSON data.
+5. Checked line count of `history.md` (currently ~720 lines), well below the 15,000 threshold. No need for archiving yet.
+
+**Finding 1: Implementation Bugs (None)**
+Gemini introduced zero bugs. The implementation precisely matches the logic mandated by `week4extension.md`. The 10-seed expansion loop is concise and correct.
+
+**Finding 2: Experimental Design Flaw (Leakage)**
+I discovered a data leakage issue inherent to the `week4extension.md` design that Gemini faithfully implemented. In `src/run_poisoning_sweep.py`:
+```python
+benign_sequence = craft_benign_drift_sequence(victim_later, n_rounds, rng)
+benign_result = run_scenario_for_victim(
+    victim_enroll.copy(), benign_sequence, victim_later, attacker_enroll
+)
+```
+`craft_benign_drift_sequence` samples directly from `victim_later`. Then, `run_scenario_for_victim` tests the final baseline model's acceptance using the *exact same* `victim_later` dataset. The adaptive baseline absorbs samples, updates its internal representation, and is then evaluated on the exact samples it just absorbed. This is textbook data leakage (evaluating on the training/adaptation set). This flaw must be addressed in Week 5 planning, as the benign drift baseline is currently artificially inflated due to testing on its own adaptation data.
+
+**Environment Status:**
+The environment (dependencies, Python version) did NOT change this phase. Therefore, `results/week4_extension/requirements.lock.txt` does not need to be refrozen.
+
+**Git Tagging Judgment Call:**
+The current `week04-extension` tag points to Gemini's result-producing commit. I recommend leaving the tag there, as it represents the functional completion of the week's goals. This audit commit can simply live on `main` following the tag, or we can tag this audit commit `week04-extension-audited` if you prefer. I await your confirmation.
