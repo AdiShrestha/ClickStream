@@ -244,3 +244,125 @@ All Week 3 files were created and all 8 unit tests pass. The main script ran to 
 - SetupGuide.md needs torch install step added (flagged, not yet done)
 - Balabit parser still not implemented
 - n=1 overclaim corrected, no further action needed unless paper Methods section requires it
+
+---
+
+## claude : Week 4 Phase 1 Session Start (2026-07-09)
+
+### Pre-code checks (Rule 17 compliance)
+
+Read antigravityrules.md in full. Read history.md in full. No disagreements with any prior decisions.
+
+Git log and diff against week03 performed before touching anything:
+- git diff week03 shows only .DS_Store (macOS metadata, not tracked by project logic)
+- Working tree exactly matches what history.md describes
+- Confirmed: SetupGuide.md torch step was done in commit 69abcd0 (the open item from Week 3 history is closed)
+
+### RISK HIGH analysis
+
+week4.md does not use the label RISK HIGH explicitly. Every section has been assessed against the criterion: would a silent bug here produce a plausible-looking but meaningless result?
+
+**RISK HIGH (identified in week4.md, confirmed): src/adaptive_baseline.py**
+
+Three silent-failure modes identified beyond what the tests already cover:
+
+1. Absorption threshold miscalibration. The threshold is np.percentile(own_scores, 10.0). IsolationForest decision_function values are near zero by convention. If the enrollment set is small or happens to produce a very flat score distribution, the 10th percentile may be so negative that every candidate is absorbed (0 rejections), or so high that nothing is absorbed (0 absorptions). Either extreme gives correct-looking code and a useless experiment. Section 15's checklist explicitly catches this (n_absorbed not 0 and not 20 for every victim), but the adaptive_baseline tests should also exercise this indirectly by confirming a wildly-out-of-distribution sample is rejected.
+
+2. enrollment copy aliasing. The initialize method does initial_enrollment.copy(). Without this, run_poisoning_experiment.py's victim_enroll.copy() call in the outer loop would protect against mutation but the INNER adaptive_baseline could still be vulnerable if the copy() call is ever removed. The explicit test for rejected-candidate-does-not-change-model provides a regression guard.
+
+3. Threshold recomputed each round from CURRENT model. After each absorption, the model is refit, so the next round's threshold comes from the updated model. This is correct and intended. It is not tested explicitly in week4.md's tests. I am not adding a test for this (it would require inspecting internals) but documenting it here so Phase 2 Gemini does not accidentally cache the threshold outside offer_candidate.
+
+**RISK HIGH (NOT in week4.md, added here): rng.integers vs rng.randint mismatch**
+
+week4.md Section 7 (poisoning_attack.py) uses rng.integers(), which is a numpy Generator method.
+week4.md Section 10 (run_poisoning_experiment.py) creates rng as np.random.RandomState(EXPERIMENT_SEED).
+RandomState does NOT have .integers() -- it uses .randint(). This is a guaranteed AttributeError crash at runtime.
+
+Decision: implement poisoning_attack.py exactly as written in week4.md using rng.integers(). In run_poisoning_experiment.py (Phase 2), use np.random.default_rng(EXPERIMENT_SEED) instead of np.random.RandomState(EXPERIMENT_SEED). This is the only change from the literal week4.md code. Recorded here so Phase 2 does not silently revert it.
+
+victim_attacker_pairing.py uses rng.randint() (RandomState) -- that is consistent and must NOT be changed.
+
+**RISK HIGH (NOT in week4.md, added here): benign control shape safety**
+
+week4.md's test_benign_drift_control.py only checks that output rows match victim_later rows. It does not check the output shape when n_rounds > n_available (the replace=True branch). A shape bug here would only appear at runtime for victims with fewer later-session rows than N_ROUNDS=20. In the CMU dataset, sessions 5-8 give 200 rows per subject, so n_rounds=20 never triggers replace=True -- but the test should still exercise the replace=True branch to avoid silent breakage if N_ROUNDS is increased. I am adding one additional test for this.
+
+**NOT RISK HIGH sections:**
+- src/benign_drift_control.py: simple sampling, no hidden logic
+- src/victim_attacker_pairing.py: direct adaptation of Week 3's subject_split.py pattern, well-tested
+- tests/test_victim_attacker_pairing.py: straightforward, monkeypatching already specified in week4.md
+
+### Phase 1 scope (this session, for Claude)
+
+Build only RISK HIGH modules and their tests:
+- src/adaptive_baseline.py
+- src/poisoning_attack.py
+- src/victim_attacker_pairing.py
+- src/benign_drift_control.py
+- tests/test_adaptive_baseline.py (4 tests from week4.md + no extras needed)
+- tests/test_poisoning_attack.py (2 tests from week4.md + 1 added: RandomState compatibility)
+- tests/test_benign_drift_control.py (1 test from week4.md + 1 added: replace=True branch)
+- tests/test_victim_attacker_pairing.py (2 tests from week4.md)
+
+NOT built this phase (Phase 2, Gemini):
+- src/run_poisoning_experiment.py
+- results/week4/ (produced by the experiment script)
+- Weekly Reports/report4.md (written after results exist)
+
+### Files frozen from prior weeks (must not be changed)
+
+- src/models.py (PerUserModel interface imported by adaptive_baseline.py)
+- src/feature_extraction.py
+- src/metrics.py
+- src/splits.py
+- results/week3/subject_split.json
+- results/week3/encoder_weights.pt
+- All tests/test_* files from Weeks 1-3
+
+### Phase 1 test results (recorded before commit)
+
+Exact command:
+PYTHONPATH=. .venv/bin/pytest tests/test_adaptive_baseline.py tests/test_poisoning_attack.py tests/test_benign_drift_control.py tests/test_victim_attacker_pairing.py -v
+
+Result: 11 passed in 3.19s
+
+Full suite regression check:
+PYTHONPATH=. .venv/bin/pytest tests/ -v --tb=short
+
+Result: 29 passed in 5.43s (0 failures across all weeks)
+
+### Frozen files after Phase 1 (cannot be changed by Phase 2)
+
+These files are complete. Phase 2 must not modify them:
+- src/adaptive_baseline.py
+- src/poisoning_attack.py
+- src/benign_drift_control.py
+- src/victim_attacker_pairing.py
+- tests/test_adaptive_baseline.py
+- tests/test_poisoning_attack.py
+- tests/test_benign_drift_control.py
+- tests/test_victim_attacker_pairing.py
+
+### Handoff notes for Phase 2 (Gemini)
+
+1. The one change from literal week4.md code: run_poisoning_experiment.py must use
+   rng = np.random.default_rng(EXPERIMENT_SEED) instead of np.random.RandomState.
+   Reason: craft_poisoning_sequence uses rng.integers() which is Generator-only.
+   victim_attacker_pairing.py uses rng.randint() (RandomState) -- do not change that.
+
+2. The exact command that proves all Phase 1 tests pass:
+   PYTHONPATH=. .venv/bin/pytest tests/test_adaptive_baseline.py tests/test_poisoning_attack.py tests/test_benign_drift_control.py tests/test_victim_attacker_pairing.py -v
+   Result must be 11 passed.
+
+3. src/run_poisoning_experiment.py is the only remaining src file for this week.
+   After that file is written and run: save full console output to results/week4/,
+   create results/week4/requirements.lock.txt, write Weekly Reports/report4.md.
+
+4. Do NOT adjust absorption_percentile or N_ROUNDS to improve the attack result.
+   Report whatever the experiment actually produces.
+
+5. The Section 15 checklist in week4.md must be gone through line by line before
+   declaring Week 4 done.
+
+
+
+
