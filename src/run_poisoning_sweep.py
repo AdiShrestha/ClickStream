@@ -16,7 +16,7 @@ from src.poisoning_attack import craft_poisoning_sequence as craft_v1
 from src.poisoning_attack_v2 import craft_poisoning_sequence_meanshift as craft_v2
 from src.benign_drift_control import craft_benign_drift_sequence
 from src.victim_attacker_pairing import create_or_load_pairing
-from src.run_poisoning_experiment import get_subject_sessions, run_scenario_for_victim
+from src.run_poisoning_experiment import get_subject_sessions, run_scenario_for_victim, compute_victim_eer_threshold
 
 RESULTS_DIR = Path("results/week4_extension")
 ROUND_COUNTS = [20, 100, 200]
@@ -37,10 +37,12 @@ def main():
     v_en = get_subject_sessions(X, subjects, sessions, first_victim, (1, 2, 3, 4))
     v_la = get_subject_sessions(X, subjects, sessions, first_victim, (5, 6, 7, 8))
     a_en = get_subject_sessions(X, subjects, sessions, first_attacker, (1, 2, 3, 4))
+    impostor_test = X[(subjects != first_victim) & np.isin(sessions, (5, 6, 7, 8))]
+    eer_threshold = compute_victim_eer_threshold(v_en, v_la, impostor_test)
     timing_rng = np.random.default_rng(999)
     p_seq, _ = craft_v1(v_en, a_en, 200, timing_rng)
     t0 = time.time()
-    run_scenario_for_victim(v_en.copy(), p_seq, v_la, a_en)
+    run_scenario_for_victim(v_en.copy(), p_seq, v_la, a_en, eer_threshold)
     t1 = time.time()
     print(f"Time for 1 victim at n_rounds=200 (attack): {t1 - t0:.3f}s")
     total_est = (t1 - t0) * 51 * 2 * 3 * 2 # Roughly 51 victims * 2 scenarios * 3 round counts * 2 methods
@@ -61,14 +63,17 @@ def main():
                 victim_later = get_subject_sessions(X, subjects, sessions, victim, (5, 6, 7, 8))
                 attacker_enroll = get_subject_sessions(X, subjects, sessions, attacker, (1, 2, 3, 4))
 
+                impostor_test = X[(subjects != victim) & np.isin(sessions, (5, 6, 7, 8))]
+                eer_threshold = compute_victim_eer_threshold(victim_enroll, victim_later, impostor_test)
+
                 poison_sequence, _ = craft_fn(victim_enroll, attacker_enroll, n_rounds, rng)
                 attack_result = run_scenario_for_victim(
-                    victim_enroll.copy(), poison_sequence, victim_later, attacker_enroll
+                    victim_enroll.copy(), poison_sequence, victim_later, attacker_enroll, eer_threshold
                 )
 
                 benign_sequence = craft_benign_drift_sequence(victim_later, n_rounds, rng)
                 benign_result = run_scenario_for_victim(
-                    victim_enroll.copy(), benign_sequence, victim_later, attacker_enroll
+                    victim_enroll.copy(), benign_sequence, victim_later, attacker_enroll, eer_threshold
                 )
 
                 attack_attacker_deltas.append(attack_result["attacker_acceptance_delta"])

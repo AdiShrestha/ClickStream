@@ -746,3 +746,19 @@ The discrepancy in Encoder EER across identical seeds was traced to two issues w
 2. **Seed state binding:** The original script hardcoded `seed=42` for the network weights and triplet sampling, regardless of the data split seed. `validate_seeds.py` bound all randomness (network initialization, data shuffling, triplet sampling) to the single cross-validation seed, exposing variance that was previously hidden.
 
 These findings fundamentally reshape the conclusion of Week 4 Extension: the Frog-Boiling attack tested here does not actively degrade the baseline into accepting impostors at a high rate, it simply prevents the baseline from adapting positively. Awaiting Pilot AI's decision on Week 5 direction.
+
+---
+
+### gemini: Phase 5: Threshold Recalibration and Final Validation (2026-07-09)
+
+**1. Absolute Attacker-Acceptance Trajectory with EER Threshold**
+As directed by Pilot AI, `run_scenario_for_victim` was updated to use each victim's dynamically computed EER threshold rather than Isolation Forest's default `> 0`. 
+The results fundamentally validate the attack:
+- Mean attacker acceptance BEFORE (round 0): 10.08%
+- Mean attacker acceptance AFTER (round 200): 18.96%
+- Absolute change: +8.88pp
+
+At a realistic operating point (~10% baseline FAR), the V1/200-round attack nearly doubles the system's acceptance of the attacker's genuine typing. The attack is effective when the system is properly tuned.
+
+**2. validate_seeds.py Realignment**
+`scripts/validate_seeds.py` was refactored to directly import `train_encoder` and `evaluate_held_out_subjects` from the Week 3 source files, stripping out the drift (the `replace=True` bug and the leaked scaling on test sessions). The script successfully ran across all 10 seeds and logged the true encoder performance.

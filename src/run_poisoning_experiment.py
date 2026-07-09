@@ -14,6 +14,8 @@ from src.adaptive_baseline import AdaptiveBaseline
 from src.poisoning_attack import craft_poisoning_sequence
 from src.benign_drift_control import craft_benign_drift_sequence
 from src.victim_attacker_pairing import create_or_load_pairing
+from src.metrics import compute_eer
+from src.models import PerUserModel
 
 RESULTS_DIR = Path("results/week4")
 N_ROUNDS = 20
@@ -24,18 +26,22 @@ def get_subject_sessions(X, subjects, sessions, subject_id, session_ids):
     mask = (subjects == subject_id) & np.isin(sessions, session_ids)
     return X[mask]
 
+def compute_victim_eer_threshold(victim_enroll, victim_genuine_test, impostor_test, algorithm="isolation_forest"):
+    model = PerUserModel(algorithm=algorithm).fit(victim_enroll)
+    genuine_scores = model.score(victim_genuine_test)
+    impostor_scores = model.score(impostor_test)
+    _, eer_threshold = compute_eer(genuine_scores, impostor_scores)
+    return eer_threshold
+
 
 def run_scenario_for_victim(initial_enrollment, poison_sequence, victim_genuine_test,
-                             attacker_genuine_samples, algorithm="isolation_forest"):
+                             attacker_genuine_samples, eer_threshold, algorithm="isolation_forest"):
     baseline = AdaptiveBaseline(algorithm=algorithm).initialize(initial_enrollment)
 
     scores_before_victim = baseline.score(victim_genuine_test)
     scores_before_attacker = baseline.score(attacker_genuine_samples)
-    # "Accept" = decision_function > 0, IsolationForest's own inlier
-    # convention -- matches the scoring convention already used
-    # throughout this project (higher = more normal).
-    accept_rate_before_victim = float((scores_before_victim > 0).mean())
-    accept_rate_before_attacker = float((scores_before_attacker > 0).mean())
+    accept_rate_before_victim = float((scores_before_victim > eer_threshold).mean())
+    accept_rate_before_attacker = float((scores_before_attacker > eer_threshold).mean())
 
     n_absorbed = 0
     for i, candidate in enumerate(poison_sequence):
@@ -45,8 +51,8 @@ def run_scenario_for_victim(initial_enrollment, poison_sequence, victim_genuine_
 
     scores_after_victim = baseline.score(victim_genuine_test)
     scores_after_attacker = baseline.score(attacker_genuine_samples)
-    accept_rate_after_victim = float((scores_after_victim > 0).mean())
-    accept_rate_after_attacker = float((scores_after_attacker > 0).mean())
+    accept_rate_after_victim = float((scores_after_victim > eer_threshold).mean())
+    accept_rate_after_attacker = float((scores_after_attacker > eer_threshold).mean())
 
     return {
         "n_rounds": len(poison_sequence),
@@ -73,16 +79,19 @@ def main():
         victim_later = get_subject_sessions(X, subjects, sessions, victim, (5, 6, 7, 8))
         attacker_enroll = get_subject_sessions(X, subjects, sessions, attacker, (1, 2, 3, 4))
 
+        impostor_test = X[(subjects != victim) & np.isin(sessions, (5, 6, 7, 8))]
+        eer_threshold = compute_victim_eer_threshold(victim_enroll, victim_later, impostor_test)
+
         poison_sequence, alphas = craft_poisoning_sequence(
             victim_enroll, attacker_enroll, N_ROUNDS, rng
         )
         attack_result = run_scenario_for_victim(
-            victim_enroll.copy(), poison_sequence, victim_later, attacker_enroll
+            victim_enroll.copy(), poison_sequence, victim_later, attacker_enroll, eer_threshold
         )
 
         benign_sequence = craft_benign_drift_sequence(victim_later, N_ROUNDS, rng)
         benign_result = run_scenario_for_victim(
-            victim_enroll.copy(), benign_sequence, victim_later, attacker_enroll
+            victim_enroll.copy(), benign_sequence, victim_later, attacker_enroll, eer_threshold
         )
 
         all_results[victim] = {
