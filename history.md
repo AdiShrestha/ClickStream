@@ -494,3 +494,172 @@ The following can be sent to the pilot AI:
 4. results/week4/victim_attacker_pairs.json (fixed pairings)
 5. The core finding: ATTACK mean delta attacker -2.09pp vs BENIGN -1.65pp. The Frog-Boiling attack at N_ROUNDS=20 with linear interpolation showed no specific adversarial effect beyond general model drift from any absorbed data.
 
+
+---
+
+## claude : Week 4 Extension Phase 1 (2026-07-09)
+
+### Pre-code checks (Rule 17 compliance)
+
+Read antigravityrules.md in full (now 41 lines including 5 failure patterns added in Week 4 Phase 3). Read history.md in full (497 lines before this entry). All prior decisions confirmed, no disagreements.
+
+Git diff against week04 tag shows exactly 3 files changed (report4.md, antigravityrules.md, history.md) — these are precisely Phase 3's audit commit. Working tree matches history.md exactly. Nothing unexplained.
+
+### What this extension is and is not
+
+This is NOT a redo of Week 4. All of Week 4's code, results, and findings stay exactly as committed and tagged week04. This extension adds:
+1. V2 crafting method (mean-shift, src/poisoning_attack_v2.py) to isolate whether V1's null result is caused by the between-two-people feature-space landing problem identified in report4.md Section 5.2
+2. A parameterized sweep runner (src/run_poisoning_sweep.py) that runs both methods at N_ROUNDS in {20, 100, 200}
+3. Resolution of validate_seeds.py to close the Week 3 10-seed cross-validation question
+
+### RISK HIGH assessment
+
+week4extension.md does not explicitly label sections RISK HIGH. Every section assessed against the criterion: silent bug producing plausible-looking but meaningless result.
+
+**RISK HIGH (identified, building this phase): src/poisoning_attack_v2.py**
+
+The mean-shift V2 function uses rng.normal(). This method exists on BOTH numpy Generator and RandomState, unlike rng.integers() which is Generator-only. This creates a subtle hazard: someone could call V2 with a RandomState and it would silently work, then pass that same rng to V1 (craft_poisoning_sequence) in the sweep and crash with AttributeError. The correct contract is: V2 must require a numpy Generator, matching V1's contract, so that any rng usable with the sweep's unified rng object is guaranteed to work with both.
+
+Decision: add a test test_v2_requires_numpy_generator that explicitly passes both a Generator and a RandomState, confirms the Generator path works, and documents that the function expects Generator (even though RandomState.normal() would also run). This test is added in addition to the 3 tests specified in week4extension.md Section 4.
+
+Shape audit for V2:
+- Input victim_samples: (n_victim, n_features) -- same as V1
+- Input attacker_samples: (n_attacker, n_features) -- same as V1
+- Input n_rounds: int
+- Input rng: numpy Generator (np.random.default_rng)
+- Output candidates: (n_rounds, n_features) -- same as V1
+- Output alphas: (n_rounds,) -- same as V1
+The sweep passes (victim_enroll, attacker_enroll, n_rounds, rng) which matches this signature exactly.
+
+**RISK HIGH (identified, NOT building this phase): src/run_poisoning_sweep.py**
+
+This file is Phase 2's work. However, I have identified two interface contracts the sweep depends on that Phase 2 must follow:
+
+CONTRACT 1 -- import from run_poisoning_experiment:
+The sweep does: from src.run_poisoning_experiment import get_subject_sessions, run_scenario_for_victim
+These two functions must remain importable with those exact names from that exact module. Phase 2 must not rename, refactor, or move them. If Phase 2 needs to change behavior, it must do so while keeping the names and signatures stable.
+
+CONTRACT 2 -- craft_fn call signature:
+The sweep calls craft_fn(victim_enroll, attacker_enroll, n_rounds, rng) as positional args.
+V1 signature: craft_poisoning_sequence(victim_samples, attacker_samples, n_rounds, rng) -- matches.
+V2 signature: craft_poisoning_sequence_meanshift(victim_samples, attacker_samples, n_rounds, rng) -- matches.
+Both must remain positional-compatible with (array, array, int, rng).
+
+CONTRACT 3 -- performance flag for Phase 2:
+At n_rounds=200, run_scenario_for_victim runs 200 absorption rounds, each refitting IsolationForest. 51 victims x 2 methods x 3 round counts = 306 scenario runs, with some involving 200 refits each. On M3 without fan this is approximately 306 x 200 x ~0.01s per fit = ~600s total (estimate; actual depends on enrollment size after absorptions). This may trigger thermal throttling. Phase 2 should time one victim at n_rounds=200 first and project the total before starting the full sweep unattended. If over ~20 minutes per config, checkpoint intermediate results. IsolationForest with 100 trees on 200-row enrollment fits in ~10ms on CPU; 200 rounds x 51 victims = 10200 fits x 10ms = ~100 seconds per config, 6 configs = ~600 seconds total. Should be under 20 minutes, likely fine, but timing should be confirmed.
+
+CONTRACT 4 -- benign control at n_rounds=100 or 200:
+craft_benign_drift_sequence is called with n_rounds=100 or 200 but victim_later has only ~200 rows (sessions 5-8 of CMU data = 200 rows exactly). At n_rounds=100: 100 < 200, uses replace=False. At n_rounds=200: 200 <= 200, uses replace=False (n_rounds <= n_available). So replace=True branch is never triggered in the CMU dataset even at 200 rounds. This is correct and consistent. No action needed, just recorded.
+
+**NOT RISK HIGH sections:**
+
+- validate_seeds.py extension (bonus task, not a blocker, clearly marked as such in extension spec)
+- The 3 tests specified in week4extension.md Section 4 are straightforward and low-risk beyond the V2 RNG contract issue already addressed
+
+### Signature cross-check vs. Phase 2 code
+
+Phase 2 writes run_poisoning_sweep.py. That file imports:
+- craft_v1 = craft_poisoning_sequence from src.poisoning_attack -- FROZEN, cannot break
+- craft_v2 = craft_poisoning_sequence_meanshift from src.poisoning_attack_v2 -- I am building this
+- craft_benign_drift_sequence from src.benign_drift_control -- FROZEN
+- create_or_load_pairing from src.victim_attacker_pairing -- FROZEN
+- get_subject_sessions, run_scenario_for_victim from src.run_poisoning_experiment -- FROZEN, must not be renamed
+
+Phase 2 must use np.random.default_rng(SWEEP_SEED) as the rng, NOT RandomState, because craft_v1 requires Generator. This is the same constraint as Week 4's run_poisoning_experiment.py deviation from the literal spec. Recorded here so Phase 2 sees it before writing a single line.
+
+### Phase 1 scope (this session)
+
+Building:
+- src/poisoning_attack_v2.py
+- tests/test_poisoning_attack_v2.py (3 from spec + 1 additional Generator contract test)
+
+NOT building this phase:
+- src/run_poisoning_sweep.py (Phase 2)
+- scripts/validate_seeds.py extension (Phase 2, bonus task)
+- results/week4_extension/ (produced by sweep)
+- Weekly Reports/report4_extension.md (after results exist)
+
+### Build and test results
+
+Files created:
+- src/poisoning_attack_v2.py
+- tests/test_poisoning_attack_v2.py (4 tests: 3 from spec + 1 Generator contract)
+
+COMMAND: PYTHONPATH=. .venv/bin/pytest tests/test_poisoning_attack_v2.py -v
+RESULT: 4 passed in 0.09s
+
+COMMAND: PYTHONPATH=. .venv/bin/pytest tests/ -v --tb=short
+RESULT: 33 passed in 3.33s, 0 failures
+
+### Test fix during Phase 1 (must be recorded)
+
+The spec's test_v2_uses_victim_std_not_attacker_std checks that V2 uses victim_std not attacker_std for the noise term. The spec's version does this by checking candidates.std() < 1.0 with victim_std=0.01 and attacker_std=5.0. This test is wrong in the spec: candidates.std() computes the standard deviation ACROSS ALL ROUNDS including the mean-shift from victim_mean (near 0) to attacker_mean (near 10), so the between-round center drift dominates the spread (actual value 2.96) regardless of whether victim_std or attacker_std is used for per-round noise.
+
+Fix: use n_rounds=1 to isolate a single candidate where the only variance is the per-round noise term. At alpha=1.0 (single round), the center is attacker_mean (~10), and the noise term should be governed by victim_std (~0.01). Measure noise as abs(candidate - attacker_mean) per feature; should be < 0.5 with victim_std=0.01, would be ~5.0 if attacker_std were used instead. This test correctly isolates what it claims to test.
+
+This fix changes the test relative to the spec. The fix is correct and the spec's version is wrong. Recorded here for Phase 2/3 reference.
+
+### ⚠ CRITICAL: Handoff notes for Phase 2
+
+**READ THIS SECTION BEFORE WRITING A SINGLE LINE OF CODE**
+
+1. rng must be np.random.default_rng(SWEEP_SEED) -- NOT RandomState.
+   craft_v1 uses rng.integers() which is Generator-only. craft_v2 uses rng.normal()
+   which works on either, but both functions share the same rng in the sweep,
+   so the rng must be a Generator to satisfy craft_v1's requirement.
+
+2. The sweep imports get_subject_sessions and run_scenario_for_victim from
+   src.run_poisoning_experiment. These function names and signatures MUST NOT
+   change. src/run_poisoning_experiment.py is frozen from Week 4.
+
+3. Performance timing check: before running all 6 sweep configs, time ONE victim
+   at n_rounds=200 (one call to run_scenario_for_victim with a 200-element sequence).
+   Each absorption refits IsolationForest. Total estimate ~600s for the full sweep.
+   If any single config is projecting over 20 minutes on its own, checkpoint.
+
+4. The validate_seeds.py extension (10-seed cross-validation) is a BONUS TASK.
+   It is NOT a blocker for the sweep result. Complete the sweep first, then decide
+   whether to extend validate_seeds.py. The script currently runs seeds 0, 1, 2 only.
+
+5. results directory: results/week4_extension/ (not results/week4/). Do not
+   write into the frozen results/week4/ directory.
+
+---
+
+## Frozen files after Phase 1
+
+The following files are complete and must not be modified by Phase 2:
+
+src/poisoning_attack_v2.py
+tests/test_poisoning_attack_v2.py
+
+The following files from prior phases are also frozen (same constraint as Week 4):
+
+src/adaptive_baseline.py
+src/poisoning_attack.py
+src/benign_drift_control.py
+src/victim_attacker_pairing.py
+src/run_poisoning_experiment.py
+tests/test_adaptive_baseline.py
+tests/test_poisoning_attack.py
+tests/test_benign_drift_control.py
+tests/test_victim_attacker_pairing.py
+src/models.py
+src/feature_extraction.py
+src/metrics.py
+src/splits.py
+src/device.py
+src/key_sequence.py
+src/subject_split.py
+src/sequence_scaler.py
+src/encoder_model.py
+src/train_encoder.py
+src/embedding_check.py
+src/evaluate_encoder.py
+src/evaluate_baseline_heldout.py
+src/run_week3.py
+results/week3/subject_split.json
+results/week3/encoder_weights.pt
+results/week4/poisoning_results.json
+results/week4/victim_attacker_pairs.json
+
