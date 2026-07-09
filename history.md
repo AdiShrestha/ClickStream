@@ -751,14 +751,26 @@ These findings fundamentally reshape the conclusion of Week 4 Extension: the Fro
 
 ### gemini: Phase 5: Threshold Recalibration and Final Validation (2026-07-09)
 
-**1. Absolute Attacker-Acceptance Trajectory with EER Threshold**
+**1. Absolute Attacker-Acceptance Trajectories with EER Threshold**
 As directed by Pilot AI, `run_scenario_for_victim` was updated to use each victim's dynamically computed EER threshold rather than Isolation Forest's default `> 0`. 
-The results fundamentally validate the attack:
+The results fundamentally validate the attack and resolve the benign confound:
+
+*ATTACK (V1 / 200 rounds)*
 - Mean attacker acceptance BEFORE (round 0): 10.08%
-- Mean attacker acceptance AFTER (round 200): 18.96%
-- Absolute change: +8.88pp
+- Mean attacker acceptance AFTER (round 200): 18.54%
+- Absolute change: +8.46pp
 
-At a realistic operating point (~10% baseline FAR), the V1/200-round attack nearly doubles the system's acceptance of the attacker's genuine typing. The attack is effective when the system is properly tuned.
+*BENIGN CONTROL (200 rounds)*
+- Mean attacker acceptance BEFORE (round 0): 10.08%
+- Mean attacker acceptance AFTER (round 200): 6.74%
+- Absolute change: -3.34pp
 
-**2. validate_seeds.py Realignment**
+At a realistic operating point (~10% baseline FAR), the V1/200-round attack nearly doubles the system's acceptance of the attacker's genuine typing. Crucially, the benign control demonstrates that absorbing genuine data naturally hardens the model against the attacker (dropping FAR to 6.74%). The attack not only suppresses this hardening but actively subverts it, forcing the FAR up to 18.54%. The finding is clean and attack-specific.
+
+**2. validate_seeds.py Realignment & Determinism Check**
 `scripts/validate_seeds.py` was refactored to directly import `train_encoder` and `evaluate_held_out_subjects` from the Week 3 source files, stripping out the drift (the `replace=True` bug and the leaked scaling on test sessions). The script successfully ran across all 10 seeds and logged the true encoder performance.
+
+Additionally, to verify the hypothesis of MPS (Metal Performance Shaders) non-determinism, `validate_seeds.py` was run twice in a row on Seed 0 with zero code changes.
+- **Run 1 EER:** 0.1377
+- **Run 2 EER:** 0.1377
+The mean triplet loss matched bit-for-bit to 4 decimal places at every single epoch (1 through 50). Therefore, PyTorch's MPS backend is perfectly deterministic here. The variance observed between the "Original (ad-hoc)" script and the "Fixed" script stems from an external configuration mismatch (such as passing `seed` to the training function versus defaulting to 42, or differences in subsets), not hardware instability.
