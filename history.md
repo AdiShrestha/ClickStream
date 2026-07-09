@@ -393,3 +393,104 @@ The Frog-Boiling attack is no more effective at making the attacker look "genuin
 - [x] `results/week4/poisoning_results.json` exists.
 
 All checklist items pass. Handoff back to Claude for Phase 3.
+
+---
+
+## claude : Week 4 Phase 3 Audit (2026-07-09)
+
+### Pre-audit reads
+
+Read antigravityrules.md and history.md in full including Gemini's Phase 2 entry. All prior decisions confirmed and carried forward.
+
+### Scope verification (git diff dd0ec23 0d16f53)
+
+Gemini's commit added exactly:
+- src/run_poisoning_experiment.py (the only remaining Phase 2 file, correct)
+- results/week4/poisoning_results.json (experiment output, correct)
+- results/week4/run_experiment_output.txt (console log, correct)
+- results/week4/requirements.lock.txt (environment freeze, correct)
+- results/week4/victim_attacker_pairs.json (pairing file, correct)
+- Weekly Reports/report4.md (report, DEFICIENT -- see below)
+- history.md (update, FACTUAL ERROR -- see below)
+- AI_USE_LOG.md (correct)
+- Build Guides/weeks/week4.md (previously untracked planning doc, legitimate)
+- scripts/validate_seeds.py (out of scope, not cited, flagged)
+
+All 8 frozen Phase 1 files: byte-for-byte unchanged. Verified by git diff returning empty.
+All prior-week frozen files (models.py, feature_extraction.py, metrics.py, splits.py, results/week3/*, all Weeks 1-3 tests): byte-for-byte unchanged.
+
+### Numbers independently reproduced
+
+Recomputed from results/week4/poisoning_results.json directly:
+- ATTACK mean delta attacker: -2.09pp (std 8.09pp) -- MATCHES Gemini
+- BENIGN mean delta attacker: -1.65pp (std 6.25pp) -- MATCHES Gemini
+- ATTACK mean delta victim: -0.21pp -- MATCHES Gemini
+- BENIGN mean delta victim: +0.03pp -- MATCHES Gemini
+- N subjects: 51 -- CORRECT
+- Self-pairs: none -- CORRECT
+
+### Factual error in Gemini's history.md entry
+
+Gemini wrote: "n_absorbed counts are sane (checked the raw JSON, values range from 8 to 19)"
+
+Actual values from the JSON: min=2, max=20, mean=11.3.
+Three subjects (s040, s046, s047) have n_absorbed=20 (full absorption).
+One subject (s026) has n_absorbed=2.
+
+Gemini's claim was wrong. The range in Gemini's entry is NOT corrected retroactively (per Rule 17: do not alter prior agent's text). The correction is in this entry and in report4.md. Added as PATTERN W4-3 in antigravityrules.md.
+
+The checklist item Gemini ticked off (n_absorbed not 0 for every victim, not 20 for every victim) technically passes even with the corrected numbers: three victims at 20 is not "every victim." So the result is not invalidated, only the summary was wrong.
+
+### Structural issues in Gemini's work (not bugs)
+
+1. report4.md was 100 lines missing all mandatory sections from Rule 26. Replaced with 411-line report with complete section structure. All claims trace to commands or log files.
+
+2. scripts/validate_seeds.py was added to commit out of scope. Not run, not cited, not producing new results. Added as PATTERN W4-5 in antigravityrules.md. Left in place since it is already tagged; flagged in report4.md Section 7.2 for pilot awareness.
+
+3. Shared rng between attack and benign control sequences is not a bug but makes independent analysis harder. Added as note in report4.md Section 3.5. Flagged for Week 5.
+
+4. `attacker_genuine_samples` in run_scenario_for_victim uses attacker's enrollment (sessions 1-4) rather than test sessions (5-8). Reasonable but creates slight optimistic bias for the attacker in the before/after measurement. Flagged in report4.md Section 9.
+
+### New failure patterns added to antigravityrules.md
+
+PATTERN W4-1: Generator vs RandomState mismatch (.integers vs .randint)
+PATTERN W4-2: Full absorption (n_absorbed == n_rounds) for some subjects
+PATTERN W4-3: Summary statistic errors -- always recompute from JSON
+PATTERN W4-4: Report below Rule 6 minimum without mandatory Rule 26 sections
+PATTERN W4-5: Out-of-scope scripts in commits
+
+### history.md line count
+
+395 lines before this entry. Well below the 15,000-line consideration threshold. No archiving needed.
+
+### Verification checklist (self-run, not trusting Gemini's printed output)
+
+All commands run by me in Phase 3:
+
+COMMAND: PYTHONPATH=. .venv/bin/pytest tests/test_adaptive_baseline.py tests/test_poisoning_attack.py tests/test_benign_drift_control.py tests/test_victim_attacker_pairing.py -v
+RESULT: 11 passed in 1.82s
+
+COMMAND: PYTHONPATH=. .venv/bin/pytest tests/ -v --tb=short
+RESULT: 29 passed in 2.95s
+
+COMMAND: python3 -c "import json,numpy as np; ..." (reproduce aggregate stats from JSON)
+RESULT: All aggregate numbers match Gemini's printed output. n_absorbed range corrected to 2-20.
+
+### Final commit state
+
+Files committed in Phase 3:
+- Weekly Reports/report4.md (complete replacement)
+- antigravityrules.md (5 new failure patterns)
+- history.md (this entry)
+
+Tag week04 was applied by Gemini at 0d16f53. Phase 3 adds one more commit on top. The tag remains pointing to Gemini's final state per Rule 16. The Phase 3 commit is an audit and report fix, not a code or result change.
+
+### Ready for pilot
+
+The following can be sent to the pilot AI:
+1. Weekly Reports/report4.md (this file, 411 lines, complete)
+2. results/week4/poisoning_results.json (51 subjects, both scenarios)
+3. results/week4/run_experiment_output.txt (full console output)
+4. results/week4/victim_attacker_pairs.json (fixed pairings)
+5. The core finding: ATTACK mean delta attacker -2.09pp vs BENIGN -1.65pp. The Frog-Boiling attack at N_ROUNDS=20 with linear interpolation showed no specific adversarial effect beyond general model drift from any absorbed data.
+
