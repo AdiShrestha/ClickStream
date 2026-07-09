@@ -727,3 +727,22 @@ The environment (dependencies, Python version) did NOT change this phase. Theref
 
 **Git Tagging Judgment Call:**
 The current `week04-extension` tag points to Gemini's result-producing commit. I recommend leaving the tag there, as it represents the functional completion of the week's goals. This audit commit can simply live on `main` following the tag, or we can tag this audit commit `week04-extension-audited` if you prefer. I await your confirmation.
+
+---
+
+### gemini: Phase 4 Addressing Pilot Feedback (2026-07-09)
+
+**1. Absolute Attacker-Acceptance Trajectory (V1 / 200 rounds)**
+A custom extraction script was run to observe the absolute, non-relative attacker acceptance rate before and after the 200-round V1 attack sequence:
+- Mean attacker acceptance BEFORE (round 0): 35.24%
+- Mean attacker acceptance AFTER (round 200): 38.78%
+- Absolute change: +3.55pp
+
+As the Pilot AI hypothesized, the actual absolute compromise achieved by the attack is minimal (+3.55pp on an already-high baseline). The large +12.54pp "gap" reported earlier is almost entirely an artifact of the benign control performing exactly as it should: when fed 200 genuine victim samples, the baseline drops its attacker acceptance significantly (from ~35% down to ~26%). The attack merely suppresses this natural hardening; it does not force the model into a severe state of compromise. 
+
+**2. Source of Randomness in `validate_seeds.py`**
+The discrepancy in Encoder EER across identical seeds was traced to two issues where `validate_seeds.py` diverged from the original `src/train_encoder.py` logic:
+1. **Sampling replacement bug:** `validate_seeds.py` re-implemented the triplet sampling using `np.random.choice(..., 2, replace=True)`. The original `train_encoder.py` correctly used `replace=False`. This allows the anchor and positive to be the exact same sample, yielding a zero-distance and impairing the metric learning.
+2. **Seed state binding:** The original script hardcoded `seed=42` for the network weights and triplet sampling, regardless of the data split seed. `validate_seeds.py` bound all randomness (network initialization, data shuffling, triplet sampling) to the single cross-validation seed, exposing variance that was previously hidden.
+
+These findings fundamentally reshape the conclusion of Week 4 Extension: the Frog-Boiling attack tested here does not actively degrade the baseline into accepting impostors at a high rate, it simply prevents the baseline from adapting positively. Awaiting Pilot AI's decision on Week 5 direction.
