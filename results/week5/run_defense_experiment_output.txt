@@ -1,0 +1,70 @@
+Loaded existing victim-attacker pairing from results/week4/victim_attacker_pairs.json
+=== Calibrating CUSUM threshold on benign-only data ===
+Loaded existing victim-attacker pairing from results/week4/victim_attacker_pairs.json
+Max-CUSUM distribution under 51 victims' benign drift (k=0.0):
+  min=0.1323, median=3.9951, max=12.6180
+  Setting h = 95th percentile = 9.7498 (targets ~5% false-alarm rate on benign drift)
+s002: undef_attack Δ=-2.00pp | def_attack Δ=-8.00pp (triggers=34/200) | def_benign Δ=-3.00pp (triggers=43/200)
+s003: undef_attack Δ=+18.50pp | def_attack Δ=+18.50pp (triggers=3/200) | def_benign Δ=+1.00pp (triggers=0/200)
+s004: undef_attack Δ=-0.50pp | def_attack Δ=-2.00pp (triggers=14/200) | def_benign Δ=-8.00pp (triggers=0/200)
+s005: undef_attack Δ=+19.50pp | def_attack Δ=+19.50pp (triggers=0/200) | def_benign Δ=-8.00pp (triggers=0/200)
+s007: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=73/200) | def_benign Δ=+0.50pp (triggers=0/200)
+s008: undef_attack Δ=+9.00pp | def_attack Δ=+9.00pp (triggers=0/200) | def_benign Δ=-0.50pp (triggers=0/200)
+s010: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=76/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s011: undef_attack Δ=+17.50pp | def_attack Δ=+17.50pp (triggers=0/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s012: undef_attack Δ=+10.00pp | def_attack Δ=+10.00pp (triggers=0/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s013: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=105/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s015: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=67/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s016: undef_attack Δ=+19.50pp | def_attack Δ=+19.50pp (triggers=0/200) | def_benign Δ=+4.00pp (triggers=0/200)
+s017: undef_attack Δ=-3.50pp | def_attack Δ=-3.50pp (triggers=78/200) | def_benign Δ=-3.50pp (triggers=0/200)
+s018: undef_attack Δ=-0.50pp | def_attack Δ=-0.50pp (triggers=37/200) | def_benign Δ=-0.50pp (triggers=0/200)
+s019: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=67/200) | def_benign Δ=-2.00pp (triggers=0/200)
+s020: undef_attack Δ=+6.00pp | def_attack Δ=+6.00pp (triggers=0/200) | def_benign Δ=-25.00pp (triggers=0/200)
+s021: undef_attack Δ=+16.00pp | def_attack Δ=+16.00pp (triggers=0/200) | def_benign Δ=-0.50pp (triggers=0/200)
+s022: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=93/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s024: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=84/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s025: undef_attack Δ=-20.50pp | def_attack Δ=-20.50pp (triggers=0/200) | def_benign Δ=-26.50pp (triggers=0/200)
+s026: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=111/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s027: undef_attack Δ=+0.00pp | def_attack Δ=+0.50pp (triggers=50/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s028: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=105/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s029: undef_attack Δ=+14.00pp | def_attack Δ=+14.00pp (triggers=0/200) | def_benign Δ=-5.50pp (triggers=0/200)
+s030: undef_attack Δ=+39.00pp | def_attack Δ=+39.00pp (triggers=0/200) | def_benign Δ=-36.00pp (triggers=0/200)
+s031: undef_attack Δ=+3.50pp | def_attack Δ=+3.00pp (triggers=12/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s032: undef_attack Δ=+10.00pp | def_attack Δ=+10.00pp (triggers=0/200) | def_benign Δ=-19.50pp (triggers=45/200)
+s033: undef_attack Δ=+66.00pp | def_attack Δ=+66.00pp (triggers=0/200) | def_benign Δ=+0.50pp (triggers=0/200)
+s034: undef_attack Δ=+0.00pp | def_attack Δ=-0.50pp (triggers=63/200) | def_benign Δ=-0.50pp (triggers=9/200)
+s035: undef_attack Δ=+13.00pp | def_attack Δ=+13.00pp (triggers=0/200) | def_benign Δ=+1.50pp (triggers=0/200)
+s036: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=95/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s037: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=102/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s038: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=60/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s039: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=55/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s040: undef_attack Δ=+77.00pp | def_attack Δ=+77.00pp (triggers=0/200) | def_benign Δ=-4.50pp (triggers=0/200)
+s041: undef_attack Δ=+59.00pp | def_attack Δ=+59.00pp (triggers=0/200) | def_benign Δ=-13.00pp (triggers=0/200)
+s042: undef_attack Δ=-0.50pp | def_attack Δ=+0.00pp (triggers=9/200) | def_benign Δ=-12.50pp (triggers=0/200)
+s043: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=58/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s044: undef_attack Δ=-15.00pp | def_attack Δ=-11.50pp (triggers=29/200) | def_benign Δ=-19.00pp (triggers=0/200)
+s046: undef_attack Δ=+34.00pp | def_attack Δ=+34.00pp (triggers=0/200) | def_benign Δ=+27.50pp (triggers=0/200)
+s047: undef_attack Δ=+0.50pp | def_attack Δ=+0.50pp (triggers=0/200) | def_benign Δ=-2.50pp (triggers=0/200)
+s048: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=35/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s049: undef_attack Δ=+26.00pp | def_attack Δ=+26.00pp (triggers=0/200) | def_benign Δ=+1.00pp (triggers=0/200)
+s050: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=87/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s051: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=46/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s052: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=83/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s053: undef_attack Δ=+2.50pp | def_attack Δ=+1.00pp (triggers=21/200) | def_benign Δ=-1.00pp (triggers=0/200)
+s054: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=0/200) | def_benign Δ=-10.50pp (triggers=0/200)
+s055: undef_attack Δ=+0.00pp | def_attack Δ=+0.00pp (triggers=79/200) | def_benign Δ=+0.00pp (triggers=0/200)
+s056: undef_attack Δ=-0.50pp | def_attack Δ=-1.50pp (triggers=40/200) | def_benign Δ=-1.50pp (triggers=0/200)
+s057: undef_attack Δ=+0.50pp | def_attack Δ=+0.50pp (triggers=15/200) | def_benign Δ=-2.00pp (triggers=0/200)
+
+=== Aggregate across 51 victims (mean Δ attacker acceptance) ===
+UNDEFENDED attack: +8.20pp (std 18.11pp)
+DEFENDED   attack: +8.07pp (std 18.15pp)
+UNDEFENDED benign: -3.49pp (std 9.26pp)
+DEFENDED   benign: -3.32pp (std 9.11pp)
+
+Paired t-test (undefended vs defended, ATTACK scenario, n=51): t=0.876, p=0.38497
+
+Defense trigger rate -- ATTACK scenario: mean 37.0/200 rounds
+Defense trigger rate -- BENIGN scenario: mean 1.9/200 rounds (this IS the empirical false-alarm rate on genuine drift -- compare against the ~5% target used during calibration)
+
+Saved full results to results/week5/defense_results.json
