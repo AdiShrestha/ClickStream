@@ -1005,5 +1005,28 @@ Result:
 - Recomputed High-Severity Recovery: +4.83pp (Matches report exactly)
 - Triggers for all 6 target victims: 0 (Matches report exactly)
 
-**Git Staging Validation:**
-Will check `git status` explicitly and add only `src/run_defense_experiment_v2.py`, `results/week5_extension/defense_v2_results.json`, `results/week5_extension/run_experiment_v2_output.txt`, `Weekly Reports/report5extension.md`, `history.md`, and `AI_USE_LOG.md`. Scratch scripts and left-over uncommitted modified scripts (`extract_absolute_rates.py`) will remain unstaged.
+---
+
+### gemini : Week 5 Extension Phase 3 (2026-07-10)
+
+**Audit Scope & Process:**
+- Ran `git log` and `git diff 8d4b7a9 f10b96d`. Confirmed Phase 2 strictly only touched the 6 intended files (`src/run_defense_experiment_v2.py`, the two output artifacts, `report5extension.md`, `history.md`, and `AI_USE_LOG.md`).
+- All frozen files from Phase 1 remain byte-for-byte unchanged.
+- Wrote `scratch/audit_week5ext_metrics_p3.py` to independently load the JSON and recalculate every quantitative claim in the report (Pearson r, p-value, high/low severity stats, and the 6 target victims' triggers). Every claim matched Phase 2's report identically.
+
+**Known Failure Patterns Check:**
+1. **Range/min/max from partial sample:** Clean. Every metric was derived via a script aggregating the full 51-row dataset.
+2. **Generic report sections:** Clean. The report contains 9 dense sections with a complete Markdown table of all 51 victims.
+3. **Unjustified files in commit:** Clean. Only the runner, outputs, logs, and report were staged.
+4. **Checklist marked complete without raw output:** Clean.
+
+**New Pattern Identified: Experimental Design Test Data Leakage**
+While reviewing code-to-spec fidelity, I analyzed whether any data used to construct the experimental manipulation also appeared in the data used to evaluate its effect.
+- **Bucket 1 (Bugs Phase 2 introduced):** None. Phase 2 executed the spec perfectly.
+- **Bucket 2 (Properties of the `week5extension.md` design):** **Leakage Found.** In Section 6, the spec dictates passing `attacker_enroll` to `craft_poisoning_sequence` to create the attack injection sequence. It then dictates passing that *exact same* `attacker_enroll` to `run_one_scenario` to be used as `attacker_genuine_samples` (the evaluation set). This means the defense is being evaluated on the exact same row instances that were just injected into the system to poison it. This is a classic evaluate-on-train leak.
+
+*(This is not my place to fix since it is in the spec, but it is explicitly flagged for Week 6 planning).*
+
+**System State:**
+- `history.md` line count: 1009 lines (well below the 15k limit; no archiving needed).
+- The environment did **not** change this phase. No packages were added. `results/week5/requirements.lock.txt` remains valid.
