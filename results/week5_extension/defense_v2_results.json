@@ -1,0 +1,1540 @@
+{
+  "per_victim_h": {
+    "s002": 3.515562029544386,
+    "s003": 2.819848625047563,
+    "s004": 4.517982239569002,
+    "s005": 8.491649332701392,
+    "s007": 4.743096332203153,
+    "s008": 12.111290775272273,
+    "s010": 6.4201271115685055,
+    "s011": 5.928732477837813,
+    "s012": 4.502756175762426,
+    "s013": 2.671025715407953,
+    "s015": 4.3464296729957335,
+    "s016": 2.8472412778777465,
+    "s017": 8.717252310562738,
+    "s018": 3.7858763494297722,
+    "s019": 8.094349631379325,
+    "s020": 7.73864006898054,
+    "s021": 6.552350977173973,
+    "s022": 12.083441046325822,
+    "s024": 2.8933635165278666,
+    "s025": 6.825258638963623,
+    "s026": 10.38924624264888,
+    "s027": 9.203065001820812,
+    "s028": 2.993952081761696,
+    "s029": 8.0235746014991,
+    "s030": 4.2037728724679555,
+    "s031": 8.799558143174446,
+    "s032": 3.870983335851051,
+    "s033": 5.907956675014404,
+    "s034": 4.475721194448655,
+    "s035": 3.684296543460698,
+    "s036": 3.4830983068729497,
+    "s037": 7.093571787031913,
+    "s038": 4.30398820385032,
+    "s039": 6.531444255428926,
+    "s040": 3.5728871760792473,
+    "s041": 6.261394651958876,
+    "s042": 3.2150767479301776,
+    "s043": 2.6840619424985968,
+    "s044": 8.407227372901948,
+    "s046": 5.1835132800007795,
+    "s047": 4.240122972242543,
+    "s048": 3.9968987512966025,
+    "s049": 7.089748791339103,
+    "s050": 6.05065517911486,
+    "s051": 5.595674348980789,
+    "s052": 5.956047375149912,
+    "s053": 0.8498571015964238,
+    "s054": 5.896089829543555,
+    "s055": 1.7329666554143341,
+    "s056": 8.204105883709094,
+    "s057": 5.033293009171639
+  },
+  "per_victim": {
+    "s002": {
+      "attacker": "s046",
+      "similarity": 4.780066179625283,
+      "per_victim_h": 3.515562029544386,
+      "undefended_attack": {
+        "accept_before": 0.415,
+        "accept_after": 0.395,
+        "delta": -0.019999999999999962,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.415,
+        "accept_after": 0.34,
+        "delta": -0.07499999999999996,
+        "n_defense_triggers": 94
+      },
+      "undefended_benign": {
+        "accept_before": 0.415,
+        "accept_after": 0.355,
+        "delta": -0.06,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.415,
+        "accept_after": 0.415,
+        "delta": 0.0,
+        "n_defense_triggers": 161
+      }
+    },
+    "s003": {
+      "attacker": "s035",
+      "similarity": 4.508728283825994,
+      "per_victim_h": 2.819848625047563,
+      "undefended_attack": {
+        "accept_before": 0.16,
+        "accept_after": 0.39,
+        "delta": 0.23,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.16,
+        "accept_after": 0.33,
+        "delta": 0.17,
+        "n_defense_triggers": 91
+      },
+      "undefended_benign": {
+        "accept_before": 0.16,
+        "accept_after": 0.06,
+        "delta": -0.1,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.16,
+        "accept_after": 0.21,
+        "delta": 0.04999999999999999,
+        "n_defense_triggers": 169
+      }
+    },
+    "s004": {
+      "attacker": "s020",
+      "similarity": 3.832510144806581,
+      "per_victim_h": 4.517982239569002,
+      "undefended_attack": {
+        "accept_before": 0.095,
+        "accept_after": 0.09,
+        "delta": -0.0050000000000000044,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.095,
+        "accept_after": 0.02,
+        "delta": -0.075,
+        "n_defense_triggers": 69
+      },
+      "undefended_benign": {
+        "accept_before": 0.095,
+        "accept_after": 0.02,
+        "delta": -0.075,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.095,
+        "accept_after": 0.02,
+        "delta": -0.075,
+        "n_defense_triggers": 0
+      }
+    },
+    "s005": {
+      "attacker": "s050",
+      "similarity": 4.074116743371079,
+      "per_victim_h": 8.491649332701392,
+      "undefended_attack": {
+        "accept_before": 0.145,
+        "accept_after": 0.315,
+        "delta": 0.17,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.145,
+        "accept_after": 0.315,
+        "delta": 0.17,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.145,
+        "accept_after": 0.02,
+        "delta": -0.12499999999999999,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.145,
+        "accept_after": 0.02,
+        "delta": -0.12499999999999999,
+        "n_defense_triggers": 0
+      }
+    },
+    "s007": {
+      "attacker": "s012",
+      "similarity": 4.070540353303131,
+      "per_victim_h": 4.743096332203153,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 115
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 82
+      }
+    },
+    "s008": {
+      "attacker": "s027",
+      "similarity": 4.643309959002608,
+      "per_victim_h": 12.111290775272273,
+      "undefended_attack": {
+        "accept_before": 0.005,
+        "accept_after": 0.11,
+        "delta": 0.105,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.005,
+        "accept_after": 0.11,
+        "delta": 0.105,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.005,
+        "accept_after": 0.0,
+        "delta": -0.005,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.005,
+        "accept_after": 0.0,
+        "delta": -0.005,
+        "n_defense_triggers": 0
+      }
+    },
+    "s010": {
+      "attacker": "s046",
+      "similarity": 5.717461280248244,
+      "per_victim_h": 6.4201271115685055,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 100
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s011": {
+      "attacker": "s025",
+      "similarity": 4.358244565104517,
+      "per_victim_h": 5.928732477837813,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.245,
+        "delta": 0.245,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.06,
+        "delta": 0.06,
+        "n_defense_triggers": 24
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s012": {
+      "attacker": "s029",
+      "similarity": 4.423426645729814,
+      "per_victim_h": 4.502756175762426,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.095,
+        "delta": 0.095,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 47
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s013": {
+      "attacker": "s016",
+      "similarity": 5.462802711902849,
+      "per_victim_h": 2.671025715407953,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 152
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 129
+      }
+    },
+    "s015": {
+      "attacker": "s016",
+      "similarity": 5.463029849289895,
+      "per_victim_h": 4.3464296729957335,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 108
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 59
+      }
+    },
+    "s016": {
+      "attacker": "s030",
+      "similarity": 4.423505704801475,
+      "per_victim_h": 2.8472412778777465,
+      "undefended_attack": {
+        "accept_before": 0.34,
+        "accept_after": 0.545,
+        "delta": 0.20500000000000002,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.34,
+        "accept_after": 0.26,
+        "delta": -0.08000000000000002,
+        "n_defense_triggers": 53
+      },
+      "undefended_benign": {
+        "accept_before": 0.34,
+        "accept_after": 0.69,
+        "delta": 0.3499999999999999,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.34,
+        "accept_after": 0.505,
+        "delta": 0.16499999999999998,
+        "n_defense_triggers": 151
+      }
+    },
+    "s017": {
+      "attacker": "s042",
+      "similarity": 4.494843880206782,
+      "per_victim_h": 8.717252310562738,
+      "undefended_attack": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 85
+      },
+      "undefended_benign": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 0
+      }
+    },
+    "s018": {
+      "attacker": "s047",
+      "similarity": 4.236185649353918,
+      "per_victim_h": 3.7858763494297722,
+      "undefended_attack": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 108
+      },
+      "undefended_benign": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 95
+      }
+    },
+    "s019": {
+      "attacker": "s030",
+      "similarity": 4.181085153838569,
+      "per_victim_h": 8.094349631379325,
+      "undefended_attack": {
+        "accept_before": 0.025,
+        "accept_after": 0.02,
+        "delta": -0.005000000000000001,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.025,
+        "accept_after": 0.015,
+        "delta": -0.010000000000000002,
+        "n_defense_triggers": 78
+      },
+      "undefended_benign": {
+        "accept_before": 0.025,
+        "accept_after": 0.0,
+        "delta": -0.025,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.025,
+        "accept_after": 0.0,
+        "delta": -0.025,
+        "n_defense_triggers": 0
+      }
+    },
+    "s020": {
+      "attacker": "s004",
+      "similarity": 3.832510144806581,
+      "per_victim_h": 7.73864006898054,
+      "undefended_attack": {
+        "accept_before": 0.465,
+        "accept_after": 0.52,
+        "delta": 0.05499999999999999,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.465,
+        "accept_after": 0.52,
+        "delta": 0.05499999999999999,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.465,
+        "accept_after": 0.21,
+        "delta": -0.255,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.465,
+        "accept_after": 0.21,
+        "delta": -0.255,
+        "n_defense_triggers": 0
+      }
+    },
+    "s021": {
+      "attacker": "s028",
+      "similarity": 5.076168221223142,
+      "per_victim_h": 6.552350977173973,
+      "undefended_attack": {
+        "accept_before": 0.005,
+        "accept_after": 0.14,
+        "delta": 0.135,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.005,
+        "accept_after": 0.11,
+        "delta": 0.105,
+        "n_defense_triggers": 10
+      },
+      "undefended_benign": {
+        "accept_before": 0.005,
+        "accept_after": 0.0,
+        "delta": -0.005,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.005,
+        "accept_after": 0.0,
+        "delta": -0.005,
+        "n_defense_triggers": 0
+      }
+    },
+    "s022": {
+      "attacker": "s003",
+      "similarity": 5.894136370221421,
+      "per_victim_h": 12.083441046325822,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 82
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s024": {
+      "attacker": "s030",
+      "similarity": 4.333472075263327,
+      "per_victim_h": 2.8933635165278666,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 139
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 39
+      }
+    },
+    "s025": {
+      "attacker": "s051",
+      "similarity": 4.12929961691427,
+      "per_victim_h": 6.825258638963623,
+      "undefended_attack": {
+        "accept_before": 0.5,
+        "accept_after": 0.26,
+        "delta": -0.24,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.5,
+        "accept_after": 0.245,
+        "delta": -0.255,
+        "n_defense_triggers": 26
+      },
+      "undefended_benign": {
+        "accept_before": 0.5,
+        "accept_after": 0.17,
+        "delta": -0.32999999999999996,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.5,
+        "accept_after": 0.17,
+        "delta": -0.32999999999999996,
+        "n_defense_triggers": 0
+      }
+    },
+    "s026": {
+      "attacker": "s036",
+      "similarity": 6.219765477656138,
+      "per_victim_h": 10.38924624264888,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 108
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s027": {
+      "attacker": "s044",
+      "similarity": 5.332447151988408,
+      "per_victim_h": 9.203065001820812,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.005,
+        "delta": 0.005,
+        "n_defense_triggers": 53
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s028": {
+      "attacker": "s003",
+      "similarity": 4.695323707187957,
+      "per_victim_h": 2.993952081761696,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 144
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 86
+      }
+    },
+    "s029": {
+      "attacker": "s026",
+      "similarity": 4.394541333868402,
+      "per_victim_h": 8.0235746014991,
+      "undefended_attack": {
+        "accept_before": 0.42,
+        "accept_after": 0.535,
+        "delta": 0.11500000000000005,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.42,
+        "accept_after": 0.535,
+        "delta": 0.11500000000000005,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.42,
+        "accept_after": 0.345,
+        "delta": -0.07500000000000001,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.42,
+        "accept_after": 0.345,
+        "delta": -0.07500000000000001,
+        "n_defense_triggers": 0
+      }
+    },
+    "s030": {
+      "attacker": "s039",
+      "similarity": 5.011595803009112,
+      "per_victim_h": 4.2037728724679555,
+      "undefended_attack": {
+        "accept_before": 0.385,
+        "accept_after": 0.775,
+        "delta": 0.39,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.385,
+        "accept_after": 0.775,
+        "delta": 0.39,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.385,
+        "accept_after": 0.03,
+        "delta": -0.355,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.385,
+        "accept_after": 0.03,
+        "delta": -0.355,
+        "n_defense_triggers": 0
+      }
+    },
+    "s031": {
+      "attacker": "s016",
+      "similarity": 4.276778888316993,
+      "per_victim_h": 8.799558143174446,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.04,
+        "delta": 0.04,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.04,
+        "delta": 0.04,
+        "n_defense_triggers": 20
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s032": {
+      "attacker": "s027",
+      "similarity": 4.44366225912244,
+      "per_victim_h": 3.870983335851051,
+      "undefended_attack": {
+        "accept_before": 0.38,
+        "accept_after": 0.495,
+        "delta": 0.11499999999999999,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.38,
+        "accept_after": 0.415,
+        "delta": 0.034999999999999976,
+        "n_defense_triggers": 50
+      },
+      "undefended_benign": {
+        "accept_before": 0.38,
+        "accept_after": 0.205,
+        "delta": -0.17500000000000002,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.38,
+        "accept_after": 0.235,
+        "delta": -0.14500000000000002,
+        "n_defense_triggers": 153
+      }
+    },
+    "s033": {
+      "attacker": "s051",
+      "similarity": 6.095417447820571,
+      "per_victim_h": 5.907956675014404,
+      "undefended_attack": {
+        "accept_before": 0.015,
+        "accept_after": 0.72,
+        "delta": 0.705,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.015,
+        "accept_after": 0.72,
+        "delta": 0.705,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.015,
+        "accept_after": 0.01,
+        "delta": -0.004999999999999999,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.015,
+        "accept_after": 0.01,
+        "delta": -0.004999999999999999,
+        "n_defense_triggers": 0
+      }
+    },
+    "s034": {
+      "attacker": "s030",
+      "similarity": 5.153693349607455,
+      "per_victim_h": 4.475721194448655,
+      "undefended_attack": {
+        "accept_before": 0.005,
+        "accept_after": 0.01,
+        "delta": 0.005,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.005,
+        "accept_after": 0.005,
+        "delta": 0.0,
+        "n_defense_triggers": 108
+      },
+      "undefended_benign": {
+        "accept_before": 0.005,
+        "accept_after": 0.0,
+        "delta": -0.005,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.005,
+        "accept_after": 0.0,
+        "delta": -0.005,
+        "n_defense_triggers": 113
+      }
+    },
+    "s035": {
+      "attacker": "s056",
+      "similarity": 4.35775245587142,
+      "per_victim_h": 3.684296543460698,
+      "undefended_attack": {
+        "accept_before": 0.2,
+        "accept_after": 0.37,
+        "delta": 0.16999999999999998,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.2,
+        "accept_after": 0.26,
+        "delta": 0.06,
+        "n_defense_triggers": 68
+      },
+      "undefended_benign": {
+        "accept_before": 0.2,
+        "accept_after": 0.33,
+        "delta": 0.13,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.2,
+        "accept_after": 0.13,
+        "delta": -0.07,
+        "n_defense_triggers": 144
+      }
+    },
+    "s036": {
+      "attacker": "s032",
+      "similarity": 5.968177156897187,
+      "per_victim_h": 3.4830983068729497,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 136
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s037": {
+      "attacker": "s049",
+      "similarity": 7.608909839830793,
+      "per_victim_h": 7.093571787031913,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 120
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s038": {
+      "attacker": "s033",
+      "similarity": 4.818472139715435,
+      "per_victim_h": 4.30398820385032,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 104
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s039": {
+      "attacker": "s020",
+      "similarity": 3.5356026802187124,
+      "per_victim_h": 6.531444255428926,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 83
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s040": {
+      "attacker": "s019",
+      "similarity": 4.921368611146812,
+      "per_victim_h": 3.5728871760792473,
+      "undefended_attack": {
+        "accept_before": 0.065,
+        "accept_after": 0.84,
+        "delta": 0.7749999999999999,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.065,
+        "accept_after": 0.84,
+        "delta": 0.7749999999999999,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.065,
+        "accept_after": 0.04,
+        "delta": -0.025,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.065,
+        "accept_after": 0.04,
+        "delta": -0.025,
+        "n_defense_triggers": 0
+      }
+    },
+    "s041": {
+      "attacker": "s054",
+      "similarity": 4.655374996062797,
+      "per_victim_h": 6.261394651958876,
+      "undefended_attack": {
+        "accept_before": 0.06,
+        "accept_after": 0.715,
+        "delta": 0.655,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.06,
+        "accept_after": 0.715,
+        "delta": 0.655,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.06,
+        "accept_after": 0.02,
+        "delta": -0.039999999999999994,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.06,
+        "accept_after": 0.02,
+        "delta": -0.039999999999999994,
+        "n_defense_triggers": 0
+      }
+    },
+    "s042": {
+      "attacker": "s051",
+      "similarity": 4.012286164597127,
+      "per_victim_h": 3.2150767479301776,
+      "undefended_attack": {
+        "accept_before": 0.19,
+        "accept_after": 0.18,
+        "delta": -0.010000000000000009,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.19,
+        "accept_after": 0.15,
+        "delta": -0.04000000000000001,
+        "n_defense_triggers": 93
+      },
+      "undefended_benign": {
+        "accept_before": 0.19,
+        "accept_after": 0.125,
+        "delta": -0.065,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.19,
+        "accept_after": 0.125,
+        "delta": -0.065,
+        "n_defense_triggers": 0
+      }
+    },
+    "s043": {
+      "attacker": "s004",
+      "similarity": 5.303469094849859,
+      "per_victim_h": 2.6840619424985968,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 123
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s044": {
+      "attacker": "s042",
+      "similarity": 4.520194871000696,
+      "per_victim_h": 8.407227372901948,
+      "undefended_attack": {
+        "accept_before": 0.255,
+        "accept_after": 0.085,
+        "delta": -0.16999999999999998,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.255,
+        "accept_after": 0.045,
+        "delta": -0.21000000000000002,
+        "n_defense_triggers": 43
+      },
+      "undefended_benign": {
+        "accept_before": 0.255,
+        "accept_after": 0.005,
+        "delta": -0.25,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.255,
+        "accept_after": 0.005,
+        "delta": -0.25,
+        "n_defense_triggers": 0
+      }
+    },
+    "s046": {
+      "attacker": "s010",
+      "similarity": 5.717461280248244,
+      "per_victim_h": 5.1835132800007795,
+      "undefended_attack": {
+        "accept_before": 0.05,
+        "accept_after": 0.325,
+        "delta": 0.275,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.05,
+        "accept_after": 0.325,
+        "delta": 0.275,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.05,
+        "accept_after": 0.07,
+        "delta": 0.020000000000000004,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.05,
+        "accept_after": 0.07,
+        "delta": 0.020000000000000004,
+        "n_defense_triggers": 0
+      }
+    },
+    "s047": {
+      "attacker": "s026",
+      "similarity": 4.315620529347251,
+      "per_victim_h": 4.240122972242543,
+      "undefended_attack": {
+        "accept_before": 0.95,
+        "accept_after": 0.945,
+        "delta": -0.0050000000000000044,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.95,
+        "accept_after": 0.945,
+        "delta": -0.0050000000000000044,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.95,
+        "accept_after": 0.93,
+        "delta": -0.019999999999999907,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.95,
+        "accept_after": 0.945,
+        "delta": -0.0050000000000000044,
+        "n_defense_triggers": 101
+      }
+    },
+    "s048": {
+      "attacker": "s012",
+      "similarity": 4.070553363216056,
+      "per_victim_h": 3.9968987512966025,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 87
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s049": {
+      "attacker": "s044",
+      "similarity": 6.982242014348346,
+      "per_victim_h": 7.089748791339103,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.26,
+        "delta": 0.26,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.26,
+        "delta": 0.26,
+        "n_defense_triggers": 0
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s050": {
+      "attacker": "s022",
+      "similarity": 5.7514908289499305,
+      "per_victim_h": 6.05065517911486,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 111
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s051": {
+      "attacker": "s005",
+      "similarity": 5.309471132763127,
+      "per_victim_h": 5.595674348980789,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 78
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s052": {
+      "attacker": "s030",
+      "similarity": 4.465552905856504,
+      "per_victim_h": 5.956047375149912,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 110
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      }
+    },
+    "s053": {
+      "attacker": "s018",
+      "similarity": 4.51294377077379,
+      "per_victim_h": 0.8498571015964238,
+      "undefended_attack": {
+        "accept_before": 0.01,
+        "accept_after": 0.04,
+        "delta": 0.03,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.01,
+        "accept_after": 0.01,
+        "delta": 0.0,
+        "n_defense_triggers": 140
+      },
+      "undefended_benign": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.01,
+        "accept_after": 0.0,
+        "delta": -0.01,
+        "n_defense_triggers": 135
+      }
+    },
+    "s054": {
+      "attacker": "s057",
+      "similarity": 3.3210890440800735,
+      "per_victim_h": 5.896089829543555,
+      "undefended_attack": {
+        "accept_before": 0.345,
+        "accept_after": 0.365,
+        "delta": 0.020000000000000018,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.345,
+        "accept_after": 0.345,
+        "delta": 0.0,
+        "n_defense_triggers": 6
+      },
+      "undefended_benign": {
+        "accept_before": 0.345,
+        "accept_after": 0.305,
+        "delta": -0.03999999999999998,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.345,
+        "accept_after": 0.305,
+        "delta": -0.03999999999999998,
+        "n_defense_triggers": 0
+      }
+    },
+    "s055": {
+      "attacker": "s012",
+      "similarity": 5.0128314088927235,
+      "per_victim_h": 1.7329666554143341,
+      "undefended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 148
+      },
+      "undefended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.0,
+        "accept_after": 0.0,
+        "delta": 0.0,
+        "n_defense_triggers": 165
+      }
+    },
+    "s056": {
+      "attacker": "s031",
+      "similarity": 5.001207975083243,
+      "per_victim_h": 8.204105883709094,
+      "undefended_attack": {
+        "accept_before": 0.025,
+        "accept_after": 0.01,
+        "delta": -0.015000000000000001,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.025,
+        "accept_after": 0.0,
+        "delta": -0.025,
+        "n_defense_triggers": 52
+      },
+      "undefended_benign": {
+        "accept_before": 0.025,
+        "accept_after": 0.0,
+        "delta": -0.025,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.025,
+        "accept_after": 0.0,
+        "delta": -0.025,
+        "n_defense_triggers": 0
+      }
+    },
+    "s057": {
+      "attacker": "s003",
+      "similarity": 4.308570868554701,
+      "per_victim_h": 5.033293009171639,
+      "undefended_attack": {
+        "accept_before": 0.045,
+        "accept_after": 0.045,
+        "delta": 0.0,
+        "n_defense_triggers": 0
+      },
+      "defended_attack": {
+        "accept_before": 0.045,
+        "accept_after": 0.055,
+        "delta": 0.010000000000000002,
+        "n_defense_triggers": 61
+      },
+      "undefended_benign": {
+        "accept_before": 0.045,
+        "accept_after": 0.025,
+        "delta": -0.019999999999999997,
+        "n_defense_triggers": 0
+      },
+      "defended_benign": {
+        "accept_before": 0.045,
+        "accept_after": 0.025,
+        "delta": -0.019999999999999997,
+        "n_defense_triggers": 0
+      }
+    }
+  },
+  "similarity_correlation": {
+    "r": 0.10424380430639674,
+    "p": 0.4666253475272683
+  }
+}

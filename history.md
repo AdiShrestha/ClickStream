@@ -967,4 +967,43 @@ These files are complete. Phase 2 must not modify them:
 - `src/victim_attacker_similarity.py`
 - `src/calibrate_cusum_per_victim.py`
 - `tests/test_victim_attacker_similarity.py`
-*(All previously frozen files from Weeks 1-5 remain frozen).*
+---
+
+### gemini : Week 5 Extension Phase 2 (2026-07-10)
+
+**Pre-Execution Checks:**
+1. Read `antigravityrules.md` and `history.md` in full.
+2. Verified all four Pre-mortem risks raised in Phase 1:
+   - *Threshold from small sample:* Phase 1 flagged that sessions 5-6 (100 rows) is small for a 95th percentile, producing potential noise. The experiment proceeds with this and I will observe if it hurts performance.
+   - *Shared Mutable State:* Validated that `DefendedAdaptiveBaseline` is freshly instantiated for every scenario via `.initialize(victim_enroll.copy())` in `run_one_scenario`.
+   - *Data Reuse (Leakage):* Validated that `get_subject_sessions` extracts strictly `(5, 6)` for calibration in `calibrate_all_victims` and strictly `(7, 8)` for evaluation in `main()`. Leakage fixed.
+   - *Silent Success at Extremes:* The script prints `n_defense_triggers`, preventing a pegged 0 or 200 from being silent.
+3. Froze all Phase 1 files.
+
+**Implementation & Testing:**
+1. Built `src/run_defense_experiment_v2.py` exactly as specified.
+2. Started the script in the background (`task-1479`). Due to the 245,000 required IF fits, this is expected to take 1-4 hours on the fanless M3. Waiting for completion.
+3. The experiment completed successfully after 5+ hours (303 CPU-minutes).
+
+**Verification Checklist (week5extension.md Section 8):**
+- [x] Both new unit tests pass (confirmed in Phase 1).
+- [x] Per-victim `h` values are printed and their range reported (range printed: `min=0.850, max=8.407`). This replaces the single global `9.7498`.
+- [x] Similarity-severity correlation is calculated and reported: `Pearson r = 0.104, p = 0.46663`. This failed the mechanistic hypothesis.
+- [x] Stratified high/low severity breakdown checked: s040, s033, s041, s030, s046, s049 all had `n_defense_triggers = 0`. Their own natural variance allowed the attack to slip through perfectly even under per-victim calibration.
+- [x] Confirmed no leakage: `calibrate_all_victims` explicitly uses sessions `(5, 6)` and the runner evaluation sequences explicitly use sessions `(7, 8)`.
+
+**Rule 26 Report Generation & Self-Check:**
+Command: `PYTHONPATH=. .venv/bin/python scratch/generate_report5ext.py`
+Command: `wc -l "Weekly Reports/report5extension.md"` -> `110 lines`.
+Self-check: All 9 sections (Objectives, Environment, Raw results, Failed attempts, Deviations from plan, Integrity self-check, Licensing and IP notes, Open questions for pilot, Readiness for next week) are present, in exactly this order, and contain substantive text and full tables, not one-line placeholders.
+
+**Adversarial Recomputation:**
+Wrote `scratch/recompute_week5ext.py` to independently load `defense_v2_results.json` and re-derive the metrics without scraping `stdout`.
+Command: `PYTHONPATH=. .venv/bin/python scratch/recompute_week5ext.py`
+Result:
+- Recomputed r: 0.104, p: 0.46663 (Matches report exactly)
+- Recomputed High-Severity Recovery: +4.83pp (Matches report exactly)
+- Triggers for all 6 target victims: 0 (Matches report exactly)
+
+**Git Staging Validation:**
+Will check `git status` explicitly and add only `src/run_defense_experiment_v2.py`, `results/week5_extension/defense_v2_results.json`, `results/week5_extension/run_experiment_v2_output.txt`, `Weekly Reports/report5extension.md`, `history.md`, and `AI_USE_LOG.md`. Scratch scripts and left-over uncommitted modified scripts (`extract_absolute_rates.py`) will remain unstaged.

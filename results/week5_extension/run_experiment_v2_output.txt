@@ -1,0 +1,123 @@
+Loaded existing victim-attacker pairing from results/week4/victim_attacker_pairs.json
+=== Calibrating PER-VICTIM CUSUM thresholds (sessions 5-6 only) ===
+Loaded existing victim-attacker pairing from results/week4/victim_attacker_pairs.json
+s002: calibration max-CUSUM min=1.077 median=2.764 max=4.168 -> h=3.516
+s003: calibration max-CUSUM min=0.674 median=1.256 max=2.821 -> h=2.820
+s004: calibration max-CUSUM min=2.390 median=3.841 max=4.606 -> h=4.518
+s005: calibration max-CUSUM min=5.483 median=7.104 max=8.842 -> h=8.492
+s007: calibration max-CUSUM min=2.401 median=4.028 max=4.871 -> h=4.743
+s008: calibration max-CUSUM min=9.146 median=10.539 max=12.507 -> h=12.111
+s010: calibration max-CUSUM min=3.563 median=4.960 max=6.564 -> h=6.420
+s011: calibration max-CUSUM min=3.590 median=5.087 max=5.943 -> h=5.929
+s012: calibration max-CUSUM min=2.543 median=3.503 max=5.031 -> h=4.503
+s013: calibration max-CUSUM min=0.783 median=1.586 max=2.721 -> h=2.671
+s015: calibration max-CUSUM min=1.618 median=3.091 max=4.907 -> h=4.346
+s016: calibration max-CUSUM min=0.774 median=1.982 max=3.018 -> h=2.847
+s017: calibration max-CUSUM min=6.293 median=7.218 max=8.857 -> h=8.717
+s018: calibration max-CUSUM min=1.560 median=3.104 max=4.035 -> h=3.786
+s019: calibration max-CUSUM min=5.542 median=6.925 max=9.128 -> h=8.094
+s020: calibration max-CUSUM min=4.199 median=6.340 max=7.922 -> h=7.739
+s021: calibration max-CUSUM min=3.933 median=5.421 max=7.274 -> h=6.552
+s022: calibration max-CUSUM min=8.904 median=10.962 max=12.513 -> h=12.083
+s024: calibration max-CUSUM min=0.382 median=2.013 max=4.197 -> h=2.893
+s025: calibration max-CUSUM min=3.101 median=4.974 max=7.230 -> h=6.825
+s026: calibration max-CUSUM min=7.730 median=9.178 max=10.611 -> h=10.389
+s027: calibration max-CUSUM min=5.736 median=8.061 max=9.306 -> h=9.203
+s028: calibration max-CUSUM min=1.099 median=2.332 max=3.078 -> h=2.994
+s029: calibration max-CUSUM min=5.081 median=7.144 max=8.226 -> h=8.024
+s030: calibration max-CUSUM min=1.080 median=3.353 max=4.722 -> h=4.204
+s031: calibration max-CUSUM min=6.437 median=7.675 max=8.833 -> h=8.800
+s032: calibration max-CUSUM min=1.491 median=2.812 max=4.697 -> h=3.871
+s033: calibration max-CUSUM min=2.882 median=4.798 max=5.931 -> h=5.908
+s034: calibration max-CUSUM min=2.863 median=3.572 max=5.030 -> h=4.476
+s035: calibration max-CUSUM min=1.924 median=2.547 max=3.892 -> h=3.684
+s036: calibration max-CUSUM min=0.690 median=2.517 max=4.368 -> h=3.483
+s037: calibration max-CUSUM min=4.864 median=6.405 max=7.526 -> h=7.094
+s038: calibration max-CUSUM min=2.151 median=3.098 max=4.873 -> h=4.304
+s039: calibration max-CUSUM min=4.385 median=5.293 max=7.072 -> h=6.531
+s040: calibration max-CUSUM min=0.513 median=2.251 max=3.883 -> h=3.573
+s041: calibration max-CUSUM min=3.775 median=5.307 max=6.454 -> h=6.261
+s042: calibration max-CUSUM min=1.118 median=2.049 max=3.779 -> h=3.215
+s043: calibration max-CUSUM min=0.662 median=1.951 max=3.289 -> h=2.684
+s044: calibration max-CUSUM min=5.439 median=6.848 max=8.927 -> h=8.407
+s046: calibration max-CUSUM min=2.090 median=3.759 max=5.196 -> h=5.184
+s047: calibration max-CUSUM min=1.789 median=3.563 max=4.952 -> h=4.240
+s048: calibration max-CUSUM min=1.867 median=2.940 max=4.710 -> h=3.997
+s049: calibration max-CUSUM min=4.186 median=5.874 max=7.412 -> h=7.090
+s050: calibration max-CUSUM min=3.022 median=4.454 max=6.403 -> h=6.051
+s051: calibration max-CUSUM min=2.587 median=4.014 max=5.876 -> h=5.596
+s052: calibration max-CUSUM min=4.004 median=5.254 max=6.452 -> h=5.956
+s053: calibration max-CUSUM min=0.281 median=0.452 max=1.040 -> h=0.850
+s054: calibration max-CUSUM min=3.579 median=4.860 max=5.898 -> h=5.896
+s055: calibration max-CUSUM min=0.363 median=1.195 max=1.968 -> h=1.733
+s056: calibration max-CUSUM min=5.291 median=7.222 max=8.333 -> h=8.204
+s057: calibration max-CUSUM min=3.267 median=4.364 max=5.051 -> h=5.033
+s002 (sim=4.780, h=3.516): undef_attack=-2.00pp def_attack=-7.50pp (triggers=94/200)
+s003 (sim=4.509, h=2.820): undef_attack=+23.00pp def_attack=+17.00pp (triggers=91/200)
+s004 (sim=3.833, h=4.518): undef_attack=-0.50pp def_attack=-7.50pp (triggers=69/200)
+s005 (sim=4.074, h=8.492): undef_attack=+17.00pp def_attack=+17.00pp (triggers=0/200)
+s007 (sim=4.071, h=4.743): undef_attack=+0.00pp def_attack=+0.00pp (triggers=115/200)
+s008 (sim=4.643, h=12.111): undef_attack=+10.50pp def_attack=+10.50pp (triggers=0/200)
+s010 (sim=5.717, h=6.420): undef_attack=+0.00pp def_attack=+0.00pp (triggers=100/200)
+s011 (sim=4.358, h=5.929): undef_attack=+24.50pp def_attack=+6.00pp (triggers=24/200)
+s012 (sim=4.423, h=4.503): undef_attack=+9.50pp def_attack=+0.00pp (triggers=47/200)
+s013 (sim=5.463, h=2.671): undef_attack=+0.00pp def_attack=+0.00pp (triggers=152/200)
+s015 (sim=5.463, h=4.346): undef_attack=+0.00pp def_attack=+0.00pp (triggers=108/200)
+s016 (sim=4.424, h=2.847): undef_attack=+20.50pp def_attack=-8.00pp (triggers=53/200)
+s017 (sim=4.495, h=8.717): undef_attack=-1.00pp def_attack=-1.00pp (triggers=85/200)
+s018 (sim=4.236, h=3.786): undef_attack=-1.00pp def_attack=-1.00pp (triggers=108/200)
+s019 (sim=4.181, h=8.094): undef_attack=-0.50pp def_attack=-1.00pp (triggers=78/200)
+s020 (sim=3.833, h=7.739): undef_attack=+5.50pp def_attack=+5.50pp (triggers=0/200)
+s021 (sim=5.076, h=6.552): undef_attack=+13.50pp def_attack=+10.50pp (triggers=10/200)
+s022 (sim=5.894, h=12.083): undef_attack=+0.00pp def_attack=+0.00pp (triggers=82/200)
+s024 (sim=4.333, h=2.893): undef_attack=+0.00pp def_attack=+0.00pp (triggers=139/200)
+s025 (sim=4.129, h=6.825): undef_attack=-24.00pp def_attack=-25.50pp (triggers=26/200)
+s026 (sim=6.220, h=10.389): undef_attack=+0.00pp def_attack=+0.00pp (triggers=108/200)
+s027 (sim=5.332, h=9.203): undef_attack=+0.00pp def_attack=+0.50pp (triggers=53/200)
+s028 (sim=4.695, h=2.994): undef_attack=+0.00pp def_attack=+0.00pp (triggers=144/200)
+s029 (sim=4.395, h=8.024): undef_attack=+11.50pp def_attack=+11.50pp (triggers=0/200)
+s030 (sim=5.012, h=4.204): undef_attack=+39.00pp def_attack=+39.00pp (triggers=0/200)
+s031 (sim=4.277, h=8.800): undef_attack=+4.00pp def_attack=+4.00pp (triggers=20/200)
+s032 (sim=4.444, h=3.871): undef_attack=+11.50pp def_attack=+3.50pp (triggers=50/200)
+s033 (sim=6.095, h=5.908): undef_attack=+70.50pp def_attack=+70.50pp (triggers=0/200)
+s034 (sim=5.154, h=4.476): undef_attack=+0.50pp def_attack=+0.00pp (triggers=108/200)
+s035 (sim=4.358, h=3.684): undef_attack=+17.00pp def_attack=+6.00pp (triggers=68/200)
+s036 (sim=5.968, h=3.483): undef_attack=+0.00pp def_attack=+0.00pp (triggers=136/200)
+s037 (sim=7.609, h=7.094): undef_attack=+0.00pp def_attack=+0.00pp (triggers=120/200)
+s038 (sim=4.818, h=4.304): undef_attack=+0.00pp def_attack=+0.00pp (triggers=104/200)
+s039 (sim=3.536, h=6.531): undef_attack=+0.00pp def_attack=+0.00pp (triggers=83/200)
+s040 (sim=4.921, h=3.573): undef_attack=+77.50pp def_attack=+77.50pp (triggers=0/200)
+s041 (sim=4.655, h=6.261): undef_attack=+65.50pp def_attack=+65.50pp (triggers=0/200)
+s042 (sim=4.012, h=3.215): undef_attack=-1.00pp def_attack=-4.00pp (triggers=93/200)
+s043 (sim=5.303, h=2.684): undef_attack=+0.00pp def_attack=+0.00pp (triggers=123/200)
+s044 (sim=4.520, h=8.407): undef_attack=-17.00pp def_attack=-21.00pp (triggers=43/200)
+s046 (sim=5.717, h=5.184): undef_attack=+27.50pp def_attack=+27.50pp (triggers=0/200)
+s047 (sim=4.316, h=4.240): undef_attack=-0.50pp def_attack=-0.50pp (triggers=0/200)
+s048 (sim=4.071, h=3.997): undef_attack=+0.00pp def_attack=+0.00pp (triggers=87/200)
+s049 (sim=6.982, h=7.090): undef_attack=+26.00pp def_attack=+26.00pp (triggers=0/200)
+s050 (sim=5.751, h=6.051): undef_attack=+0.00pp def_attack=+0.00pp (triggers=111/200)
+s051 (sim=5.309, h=5.596): undef_attack=+0.00pp def_attack=+0.00pp (triggers=78/200)
+s052 (sim=4.466, h=5.956): undef_attack=+0.00pp def_attack=+0.00pp (triggers=110/200)
+s053 (sim=4.513, h=0.850): undef_attack=+3.00pp def_attack=+0.00pp (triggers=140/200)
+s054 (sim=3.321, h=5.896): undef_attack=+2.00pp def_attack=+0.00pp (triggers=6/200)
+s055 (sim=5.013, h=1.733): undef_attack=+0.00pp def_attack=+0.00pp (triggers=148/200)
+s056 (sim=5.001, h=8.204): undef_attack=-1.50pp def_attack=-2.50pp (triggers=52/200)
+s057 (sim=4.309, h=5.033): undef_attack=+0.00pp def_attack=+1.00pp (triggers=61/200)
+
+=== Similarity vs. attack severity correlation ===
+Pearson r = 0.104, p = 0.46663
+Expect a NEGATIVE correlation if the hypothesis holds: lower similarity distance (more alike) should predict HIGHER severity.
+
+=== HIGH-SEVERITY (top 15) ===
+  Mean undefended attack Δ: +26.13pp
+  Mean defended attack Δ:   +21.30pp
+  Mean defense triggers:    21.0/200
+  Recovery: +4.83pp
+
+=== LOW-SEVERITY (bottom 15) ===
+  Mean undefended attack Δ: +0.00pp
+  Mean defended attack Δ:   +0.10pp
+  Mean defense triggers:    107.0/200
+  Recovery: -0.10pp
+
+Saved to results/week5_extension/defense_v2_results.json
