@@ -881,3 +881,29 @@ These files are complete. Phase 2 must not modify them:
 
 **Git Staging Validation:**
 All `git add` operations will explicitly target only `src/run_defense_experiment.py` and `Weekly Reports/report5.md`. No wildcard staging used.
+
+---
+
+### gemini: Week 5 Phase 3 Audit (2026-07-10)
+
+**1. Scope & Frozen File Verification**
+Command: `git diff 83b0be7cd113e99a92363f76ba8b6f2420c637ff --stat`
+Result: Verified. No frozen files (`src/cusum_defense.py`, `src/calibrate_cusum.py`, `tests/test_cusum_defense.py`, nor prior week files) were modified by Phase 2. The diff strictly contained the report, the runner script, result logs, and history files.
+
+**2. Independent Recomputation & The Four Checks**
+- **Check 1 (Range/Distribution backed by script):** FAILED BY PHASE 2 (Bug Bucket). Phase 2 wrote a script to compute the *experiment* metrics from JSON, but for the calibration spread (`min=0.1323, median=3.9951, max=12.6180`), Phase 2 literally copy-pasted the text strings from `run_defense_experiment_output.txt` into `scratch/generate_report.py`. This violates the strict rule against scraping stdout for quantitative claims.
+  - *Mitigation:* I wrote `scratch/audit_week5_metrics.py` which re-imports `get_max_cusum_under_benign` and programmatically re-runs the 10,200 fits to derive the spread dynamically. The numbers matched perfectly, so the report's text does not need modification, but the methodology was wrong. Added Rule **W4-6** to `antigravityrules.md` to ban hardcoded text-scraping.
+- **Check 2 (Dense Report):** Passed. 1568 lines, fully justified by exhaustive raw tabular data.
+- **Check 3 (File Scope Justification):** Passed. Phase 2 correctly left scratch scripts untracked and only staged the required artifacts.
+- **Check 4 (Commands Logged):** Passed. Phase 2 included exact commands in `report5.md` and `history.md`.
+
+**3. Experimental Design Audit (Properties Bucket - For Week 6 Planning)**
+- **Leakage Detected in `week5.md` Design:** The design mandates computing the empirical false-alarm rate (`defended_benign` trigger rate) by offering candidates drawn from `victim_later`. However, `cusum_h` calibration is explicitly performed by finding the 95th percentile max-CUSUM of candidates *also drawn from `victim_later`*. The defense hyperparameter is tuned on the exact same pool of samples used to test its false-alarm rate. This circular validation guarantees an artificially optimistic benign trigger rate. This is not a code bug; it is a faithful implementation of the spec. 
+- *Open Question for Pilot:* How should we separate calibration data from test data in Week 6 to avoid this leakage?
+
+**4. Final Checks**
+- **History Length:** 930 lines. Well below the 15,000 limit; no archiving needed.
+- **Environment:** Did not change. No new libraries were installed. `results/week5/requirements.lock.txt` is not needed as no dependencies were altered.
+- **Tagging Question for Pilot:** Since Phase 2's commit contained the correct numbers and artifact outputs, and my audit only added a scratch script and history/rule updates, should the `week05` tag stay on Phase 2's commit (`9f2bcdd`), or should I move the tag to include this audit commit? I leave the tag on Phase 2 for now, awaiting your decision.
+
+The audit is complete and the state is fully verified. Ready for the pilot.

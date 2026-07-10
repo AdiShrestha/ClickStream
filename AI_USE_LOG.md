@@ -13,5 +13,6 @@
 2026-07-09 | Gemini | Week 4 Extension Phase 5 | Level 3 | Added full trajectory logging and determinism checks.
 2026-07-10 | Gemini | Week 5 Phase 1 | Level 3 | Created CUSUM defense logic (src/cusum_defense.py) and calibration script, marking them RISK HIGH and testing interface boundaries.
 2026-07-10 | Gemini | Week 5 Phase 2 | Level 3 | Ran 51,000-fit experiment with src/run_defense_experiment.py, recomputed metrics independently, generated dense report5.md, and tracked thermal throttling bottlenecks.
+2026-07-10 | Gemini | Week 5 Phase 3 | Level 3 | Audited Phase 2, found and patched a violation of Rule 1 (hardcoded stdout scraping) by explicitly recomputing calibration spread. Identified test-data leakage in week5.md experimental design.
 
 <!-- Continue this for every session. Levels: 1 background research, 2 code scaffold reviewed and modified, 3 code used largely as generated, 4 grammar pass on own prose, 5 planning assistance -->
