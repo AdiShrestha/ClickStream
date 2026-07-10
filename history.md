@@ -774,3 +774,78 @@ Additionally, to verify the hypothesis of MPS (Metal Performance Shaders) non-de
 - **Run 1 EER:** 0.1377
 - **Run 2 EER:** 0.1377
 The mean triplet loss matched bit-for-bit to 4 decimal places at every single epoch (1 through 50). Therefore, PyTorch's MPS backend is perfectly deterministic here. The variance observed between the "Original (ad-hoc)" script and the "Fixed" script stems from an external configuration mismatch (such as passing `seed` to the training function versus defaulting to 42, or differences in subsets), not hardware instability.
+
+---
+
+## gemini : Week 5 Phase 1 (2026-07-10)
+
+### Pre-mortem Analysis
+Before writing any code, I analyzed how Week 5's CUSUM defense and calibration could produce misleading results even if all scripts and tests pass perfectly:
+1. **Shared mutable state:** `DefendedAdaptiveBaseline` mutates its `_cusum_state`, `cusum_history`, and `enrollment`. If an instance is mistakenly reused across victims or between attack/benign scenarios, the accumulated CUSUM drift from one scenario will leak into the next, triggering premature false alarms. Python `dataclass` `List` fields without `default_factory` would share the same list across all instances; `week5.md` correctly specifies `default_factory=list`, but any deviation would cause catastrophic state leakage.
+2. **Threshold instability from small n:** `calibrate_cusum.py` sets `cusum_h` as the 95th percentile of exactly 51 values (one max CUSUM per victim under benign drift). The 95th percentile of 51 samples is interpolating between the 2nd and 3rd highest values. If even one or two subjects have highly erratic natural typing, they will drastically inflate `h`, making the defense far too permissive across the whole population. 
+3. **Data reuse / Leakage:** In `run_defense_experiment.py`, `victim_later` is used to compute the fixed `eer_threshold` for the baseline, AND it is used as the pool for `craft_benign_drift_sequence`. However, the final acceptance metric is strictly calculated on `attacker_genuine_samples`, which is entirely separate data (attacker's sessions 1-4). Therefore, no data is reused between the benign drift construction and the attacker acceptance evaluation.
+4. **Silent success at extremes:** If the residual `candidate_score` calculation yields values such that `residual - cusum_k` is always negative, `_cusum_state` will silently remain pegged at 0.0, and the defense will never trigger. The experiment will run successfully, but the defense will effectively be a no-op, passing the attack entirely. Alternatively, if `_reference_score` is computed incorrectly, `h` might be trivially exceeded on round 1.
+
+### RISK HIGH Classification
+Based on the explicit criteria, I am tagging the following sections as RISK HIGH and will build them in Phase 1:
+
+**1. `src/cusum_defense.py` (RISK HIGH)**
+- **Property:** Mutates shared state (`_cusum_state`, `enrollment`) across multiple calls (`offer_candidate`).
+- **Property:** Will be called by code I am not writing this phase (interface boundary to `run_defense_experiment.py`).
+- **Property:** Computes a cutoff (`_reference_score`) that gates later decisions.
+
+**2. `src/calibrate_cusum.py` (RISK HIGH)**
+- **Property:** Computes a threshold (`cusum_h`) that explicitly gates later accept/reject decisions in the defense.
+- **Property:** Will be called by code I am not writing this phase (interface boundary; `calibrate_h` is imported by `run_defense_experiment.py`).
+- **Property:** Uses a random number generator (`np.random.default_rng`) that must exactly match expectations.
+
+**3. `src/run_defense_experiment.py` (NOT RISK HIGH for Phase 1 construction)**
+- This is the final runner script. While it computes a threshold (`eer_threshold`), it is the terminal caller, not an interface boundary providing a service. To mirror Week 4's safe structure, I will leave the construction of this runner to Phase 2, but I will explicitly write a test script in Phase 1 that imports and calls the Phase 1 interfaces *exactly* as this script will, to guarantee safety across the boundary.
+
+Phase 1 Scope: Build `src/cusum_defense.py`, `tests/test_cusum_defense.py`, and `src/calibrate_cusum.py`. Write a dedicated interface test script to verify `calibrate_h` behavior.
+
+### Phase 1 Execution & Test Results
+
+The RISK HIGH modules (`src/cusum_defense.py` and `src/calibrate_cusum.py`) and tests (`tests/test_cusum_defense.py`) were built exactly as specified. An interface test script (`scratch/test_calibrate_interface.py`) was written to verify that `calibrate_h` can be imported and executed exactly as Phase 2's runner will call it.
+
+**Test 1: Interface Contract Validation**
+Command: `PYTHONPATH=. .venv/bin/python scratch/test_calibrate_interface.py`
+Output:
+```
+Testing calibrate_h signature contract...
+Loaded existing victim-attacker pairing from results/week4/victim_attacker_pairs.json
+Max-CUSUM distribution under 51 victims' benign drift (k=0.0):
+  min=0.1323, median=3.9951, max=12.6180
+  Setting h = 95th percentile = 9.7498 (targets ~5% false-alarm rate on benign drift)
+SUCCESS: calibrate_h returned 9.7498 of type <class 'float'>
+```
+
+**Test 2: Full Regression Suite**
+Command: `PYTHONPATH=. .venv/bin/pytest tests/ -v`
+Output:
+```
+============================= test session starts ==============================
+...
+collecting ... collected 36 items
+
+tests/test_adaptive_baseline.py::test_initialize_fits_on_given_enrollment PASSED [  2%]
+...
+tests/test_cusum_defense.py::test_cusum_accumulates_for_persistent_directional_drift PASSED [ 19%]
+tests/test_cusum_defense.py::test_defense_blocks_absorption_when_triggered PASSED [ 22%]
+tests/test_cusum_defense.py::test_stable_candidates_do_not_trigger_defense PASSED [ 25%]
+...
+============================== 36 passed in 7.74s ==============================
+```
+
+### Self-Audit & Known Failure Pattern Checks
+- **Reporting a range or distribution from a partial sample:** Not applicable this phase. `calibrate_h` computes its percentiles across all 51 victims without sub-sampling. 
+- **Generating a report section that exists in name but is generic:** Not applicable this phase (reports are generated in Phase 2).
+- **Letting an unreviewed file into a commit via blanket git add:** Checked. My upcoming commit explicitly only stages `src/cusum_defense.py`, `src/calibrate_cusum.py`, `tests/test_cusum_defense.py`, and `history.md`. `scratch/test_calibrate_interface.py` is ignored or left unstaged.
+- **Treating a claim as verified because it sounds right rather than citing raw output:** Verified. I asserted that all tests pass, and I directly pasted the `pytest` and interface script console outputs immediately above this paragraph.
+
+### Frozen files after Phase 1
+These files are complete. Phase 2 must not modify them:
+- `src/cusum_defense.py`
+- `src/calibrate_cusum.py`
+- `tests/test_cusum_defense.py`
+*(All previously frozen files from Weeks 1-4 remain frozen).*
