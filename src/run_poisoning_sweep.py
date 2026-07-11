@@ -61,19 +61,20 @@ def main():
             for victim, attacker in pairing.items():
                 victim_enroll = get_subject_sessions(X, subjects, sessions, victim, (1, 2, 3, 4))
                 victim_later = get_subject_sessions(X, subjects, sessions, victim, (5, 6, 7, 8))
-                attacker_enroll = get_subject_sessions(X, subjects, sessions, attacker, (1, 2, 3, 4))
+                attacker_craft_pool = get_subject_sessions(X, subjects, sessions, attacker, (1, 2))
+                attacker_eval_pool = get_subject_sessions(X, subjects, sessions, attacker, (3, 4))
 
                 impostor_test = X[(subjects != victim) & np.isin(sessions, (5, 6, 7, 8))]
                 eer_threshold = compute_victim_eer_threshold(victim_enroll, victim_later, impostor_test)
 
-                poison_sequence, _ = craft_fn(victim_enroll, attacker_enroll, n_rounds, rng)
+                poison_sequence, _ = craft_fn(victim_enroll, attacker_craft_pool, n_rounds, rng)
                 attack_result = run_scenario_for_victim(
-                    victim_enroll.copy(), poison_sequence, victim_later, attacker_enroll, eer_threshold
+                    victim_enroll.copy(), poison_sequence, victim_later, attacker_eval_pool, eer_threshold
                 )
 
                 benign_sequence = craft_benign_drift_sequence(victim_later, n_rounds, rng)
                 benign_result = run_scenario_for_victim(
-                    victim_enroll.copy(), benign_sequence, victim_later, attacker_enroll, eer_threshold
+                    victim_enroll.copy(), benign_sequence, victim_later, attacker_eval_pool, eer_threshold
                 )
 
                 attack_attacker_deltas.append(attack_result["attacker_acceptance_delta"])

@@ -65,25 +65,26 @@ def main():
 
         victim_enroll = get_subject_sessions(X, subjects, sessions, victim, (1, 2, 3, 4))
         victim_eval = get_subject_sessions(X, subjects, sessions, victim, (7, 8))  # EVAL split, disjoint from calibration
-        attacker_enroll = get_subject_sessions(X, subjects, sessions, attacker, (1, 2, 3, 4))
+        attacker_craft_pool = get_subject_sessions(X, subjects, sessions, attacker, (1, 2))
+        attacker_eval_pool = get_subject_sessions(X, subjects, sessions, attacker, (3, 4))
         impostor_pool = X[(subjects != victim) & np.isin(sessions, (7, 8))]
 
         eer_threshold = compute_victim_eer_threshold(victim_enroll, victim_eval, impostor_pool)
-        similarity = compute_pair_similarity(victim_enroll, attacker_enroll)
+        similarity = compute_pair_similarity(victim_enroll, attacker_craft_pool)
         h = per_victim_h[victim]
 
-        poison_sequence, _ = craft_poisoning_sequence(victim_enroll, attacker_enroll, N_ROUNDS, rng)
+        poison_sequence, _ = craft_poisoning_sequence(victim_enroll, attacker_craft_pool, N_ROUNDS, rng)
         benign_sequence = craft_benign_drift_sequence(victim_eval, N_ROUNDS, rng)
 
-        undefended_attack = run_one_scenario(AdaptiveBaseline, {}, victim_enroll, poison_sequence, eer_threshold, attacker_enroll)
+        undefended_attack = run_one_scenario(AdaptiveBaseline, {}, victim_enroll, poison_sequence, eer_threshold, attacker_eval_pool)
         defended_attack = run_one_scenario(
             DefendedAdaptiveBaseline, {"cusum_k": 0.0, "cusum_h": h},
-            victim_enroll, poison_sequence, eer_threshold, attacker_enroll
+            victim_enroll, poison_sequence, eer_threshold, attacker_eval_pool
         )
-        undefended_benign = run_one_scenario(AdaptiveBaseline, {}, victim_enroll, benign_sequence, eer_threshold, attacker_enroll)
+        undefended_benign = run_one_scenario(AdaptiveBaseline, {}, victim_enroll, benign_sequence, eer_threshold, attacker_eval_pool)
         defended_benign = run_one_scenario(
             DefendedAdaptiveBaseline, {"cusum_k": 0.0, "cusum_h": h},
-            victim_enroll, benign_sequence, eer_threshold, attacker_enroll
+            victim_enroll, benign_sequence, eer_threshold, attacker_eval_pool
         )
 
         results[victim] = {
