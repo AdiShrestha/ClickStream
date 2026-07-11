@@ -41,6 +41,7 @@ class AdaptiveBaseline:
 
     def initialize(self, initial_enrollment: np.ndarray):
         self.enrollment = initial_enrollment.copy()
+        self.max_enrollment_size = len(self.enrollment)
         self.model = PerUserModel(algorithm=self.algorithm).fit(self.enrollment)
         return self
 
@@ -60,6 +61,8 @@ class AdaptiveBaseline:
 
         if absorbed:
             self.enrollment = np.vstack([self.enrollment, candidate])
+            if len(self.enrollment) > self.max_enrollment_size:
+                self.enrollment = self.enrollment[-self.max_enrollment_size:]
             self.model = PerUserModel(algorithm=self.algorithm).fit(self.enrollment)
 
         result = AdaptationRoundResult(

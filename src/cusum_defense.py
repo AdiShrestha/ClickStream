@@ -58,6 +58,8 @@ class DefendedAdaptiveBaseline(AdaptiveBaseline):
 
         if absorbed:
             self.enrollment = np.vstack([self.enrollment, candidate])
+            if len(self.enrollment) > self.max_enrollment_size:
+                self.enrollment = self.enrollment[-self.max_enrollment_size:]
             self.model = PerUserModel(algorithm=self.algorithm).fit(self.enrollment)
 
         result = AdaptationRoundResult(

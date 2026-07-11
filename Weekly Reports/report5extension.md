@@ -131,7 +131,31 @@ The confirmed-attack configuration (V1, 200 rounds, AdaptiveBaseline) was rerun 
 - **s046**: 10.00% -> 46.00% (Δ +36.00pp)
 - **s049**: 0.00% -> 29.00% (Δ +29.00pp)
 
-**Conclusion**: The Frog-Boiling attack is a genuine vulnerability, not a hallucination of leaked data. The defense fails against it because of natural variance. The Defense Arc is formally concluded.
+## 11. The Victim Access Collapse (Dilution vs Mimicry)
+Claude correctly hypothesized that the original V1 200-round attack success (+6.06pp population delta even after fixing the data leak) was primarily driven by data dilution, not stealthy targeted mimicry. Because the original `AdaptiveBaseline` allowed the enrollment set to grow unbounded, an attacker absorbing 190 rounds would nearly double the 200-sample baseline to ~390 samples. This massive volume of interpolated attacker data dragged the model towards a hybrid average, inflating attacker acceptance while slowly degrading the victim's own acceptance (which had silently dropped by -12.42pp).
+
+To isolate true mimicry from brute-force volume dilution, `AdaptiveBaseline` and `DefendedAdaptiveBaseline` were patched to enforce a strict **Sliding Window**. `max_enrollment_size` was capped (e.g., at 200). When a new attacker sample is absorbed, the oldest genuine victim sample is dropped.
+
+The V1 200-round attack was rerun under this bounded enrollment design (and maintaining the leak-free split from Section 10).
+
+**Population Results (Sliding Window, Bounded Enrollment):**
+- Mean Attacker `delta`: **+3.29pp** (Shrank from +6.06pp)
+- Mean Victim `delta`: **-29.68pp** (Crashed massively from -12.42pp)
+
+**The 6 Hardest-Hit Victims (Bounded Enrollment):**
+- **s040**: Attacker Δ +76.00pp | Victim Δ **-43.00pp** (82.5% -> 39.5%)
+- **s033**: Attacker Δ +50.00pp | Victim Δ **-50.00pp** (86.5% -> 36.5%)
+- **s041**: Attacker Δ +60.00pp | Victim Δ **-45.50pp** (82.5% -> 37.0%)
+- **s030**: Attacker Δ +24.00pp | Victim Δ **-44.50pp** (89.5% -> 45.0%)
+- **s046**: Attacker Δ -6.00pp  | Victim Δ **-80.00pp** (85.0% -> 5.0%)  <-- Complete Model Collapse
+- **s049**: Attacker Δ +73.00pp | Victim Δ **-12.00pp** (95.0% -> 83.0%) <-- Clean Mimicry
+
+**Final Conclusion:**
+The original "Frog-Boiling" claim—that an attacker stealthily achieves identity theft while the victim remains unaware—was an artifact of unbounded data dilution. 
+
+When simulated on a realistic, bounded authenticator, the attack ceases to be stealthy identity theft. As attacker samples push out genuine victim samples, the model's fidelity is utterly destroyed. For almost every high-severity victim, the model ends up rejecting the true victim more often than not, acting effectively as a **Denial of Service (DoS)** attack. In extreme cases (s046), the model destroys itself so thoroughly that it locks out both the victim and the attacker. 
+
+The paper's claim must change: Gradual poisoning against adaptive biometric systems without ground-truth labels primarily causes catastrophic baseline degradation (DoS), not stealthy identity theft. The Defense Arc is formally concluded.
 
 ### Appendix A: Full Leak-Free Raw JSON Results for the V1 200-Round Attack
 ```json

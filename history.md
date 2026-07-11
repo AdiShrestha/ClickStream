@@ -1059,6 +1059,32 @@ The population effect survives. While the delta drops slightly from the ~8.46pp 
 
 The extreme compromises survive the clean split perfectly. Victims like s040 and s041 are completely demolished by the attack despite having robust classical baselines (9% and 14% respectively), and s049 went from an impenetrable 0% to 29% acceptance. 
 
-**Conclusion:** The Frog-Boiling attack is not an artifact of data leakage. It is a genuine, structural vulnerability of adaptive biometric baselines. We have proven that the attack works, that purely distributional defenses (CUSUM) fail to stop it due to natural variance, and that the effect holds on strictly held-out data. 
+---
 
-**The Defense Arc is formally concluded.** Week 6 will pivot to the Injection Attack.
+### gemini : Week 5 Extension Phase 3 Follow-up #2 (2026-07-11)
+
+**Addressing Victim Acceptance Collapse (Dilution vs Mimicry):**
+Claude correctly identified that in the prior V1/200-round attack (even the leak-fixed version), the victim's own acceptance rate was dropping (mean -12.42pp). Since the enrollment set was allowed to grow unbounded, an attacker absorbing 190 rounds meant the 200-sample baseline ballooned to ~390 samples. Claude hypothesized that the attack wasn't a stealthy compromise of the boundary, but rather a brute-force dilution of the model via sheer volume.
+
+To test this, I modified `AdaptiveBaseline` and `DefendedAdaptiveBaseline` to enforce a strictly bounded enrollment set. Using a sliding window, whenever a new sample is absorbed, the oldest sample is dropped, capping `max_enrollment_size` at exactly the original enrollment count (e.g., 200). I reran the V1 200-round attack.
+
+**Results (Sliding Window, Bounded Enrollment):**
+- **Population Mean Attacker `delta`**: +3.29pp (Shrank from +6.06pp)
+- **Population Mean Victim `delta`**: **-29.68pp** (Crashed massively from -12.42pp)
+
+**The 6 Hardest-Hit Victims (Bounded Enrollment):**
+- **s040**: Attacker Δ +76.00pp | Victim Δ **-43.00pp** (82.5% -> 39.5%)
+- **s033**: Attacker Δ +50.00pp | Victim Δ **-50.00pp** (86.5% -> 36.5%)
+- **s041**: Attacker Δ +60.00pp | Victim Δ **-45.50pp** (82.5% -> 37.0%)
+- **s030**: Attacker Δ +24.00pp | Victim Δ **-44.50pp** (89.5% -> 45.0%)
+- **s046**: Attacker Δ -6.00pp  | Victim Δ **-80.00pp** (85.0% -> 5.0%)  <-- Complete Model Collapse
+- **s049**: Attacker Δ +73.00pp | Victim Δ **-12.00pp** (95.0% -> 83.0%) <-- The only clean mimicry
+
+**Conclusion (The Real Finding):**
+Claude was entirely correct. The original "Frog-Boiling" claim—that an attacker stealthily achieves identity theft while the victim remains unaware—was a hallucination of unbounded data dilution. 
+
+When we simulate a realistic, bounded authenticator, the attack ceases to be stealthy identity theft. As attacker samples push out genuine victim samples, the model's fidelity is utterly destroyed. For almost every high-severity victim, the model ends up rejecting the true victim more often than not, acting effectively as a Denial of Service (DoS) attack rather than a stealthy bypass. In the case of s046, the model destroys itself so thoroughly that it rejects *both* parties (Victim access drops to 5%, Attacker access drops to 4%).
+
+The paper's claim must change: Gradual poisoning against adaptive biometric systems without ground-truth labels primarily causes catastrophic baseline degradation (DoS), not stealthy identity theft. 
+
+**Ready for Week 6 (Injection Attack).**

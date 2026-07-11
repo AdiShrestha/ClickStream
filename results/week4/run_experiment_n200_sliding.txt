@@ -1,0 +1,62 @@
+Loaded existing victim-attacker pairing from results/week4/victim_attacker_pairs.json
+s002 (attacker=s046): attack Δattacker=-0.480 Δvictim=-0.425 | benign Δattacker=-0.490 Δvictim=-0.205
+s003 (attacker=s035): attack Δattacker=+0.050 Δvictim=-0.390 | benign Δattacker=-0.020 Δvictim=+0.020
+s004 (attacker=s020): attack Δattacker=+0.000 Δvictim=-0.265 | benign Δattacker=-0.060 Δvictim=-0.120
+s005 (attacker=s050): attack Δattacker=-0.120 Δvictim=-0.250 | benign Δattacker=-0.160 Δvictim=-0.215
+s007 (attacker=s012): attack Δattacker=+0.000 Δvictim=-0.235 | benign Δattacker=+0.000 Δvictim=-0.120
+s008 (attacker=s027): attack Δattacker=-0.010 Δvictim=-0.210 | benign Δattacker=-0.010 Δvictim=-0.190
+s010 (attacker=s046): attack Δattacker=+0.000 Δvictim=-0.120 | benign Δattacker=+0.000 Δvictim=-0.195
+s011 (attacker=s025): attack Δattacker=+0.000 Δvictim=-0.605 | benign Δattacker=+0.000 Δvictim=-0.165
+s012 (attacker=s029): attack Δattacker=+0.030 Δvictim=-0.890 | benign Δattacker=+0.000 Δvictim=-0.655
+s013 (attacker=s016): attack Δattacker=+0.000 Δvictim=-0.080 | benign Δattacker=+0.000 Δvictim=-0.255
+s015 (attacker=s016): attack Δattacker=+0.000 Δvictim=-0.240 | benign Δattacker=+0.000 Δvictim=-0.075
+s016 (attacker=s030): attack Δattacker=+0.310 Δvictim=+0.005 | benign Δattacker=+0.130 Δvictim=+0.035
+s017 (attacker=s042): attack Δattacker=-0.050 Δvictim=-0.005 | benign Δattacker=-0.050 Δvictim=-0.095
+s018 (attacker=s047): attack Δattacker=-0.010 Δvictim=-0.685 | benign Δattacker=-0.010 Δvictim=-0.340
+s019 (attacker=s030): attack Δattacker=+0.000 Δvictim=-0.250 | benign Δattacker=+0.000 Δvictim=-0.230
+s020 (attacker=s004): attack Δattacker=-0.390 Δvictim=-0.765 | benign Δattacker=-0.520 Δvictim=-0.355
+s021 (attacker=s028): attack Δattacker=+0.350 Δvictim=-0.580 | benign Δattacker=-0.010 Δvictim=-0.130
+s022 (attacker=s003): attack Δattacker=+0.000 Δvictim=-0.030 | benign Δattacker=+0.000 Δvictim=-0.265
+s024 (attacker=s030): attack Δattacker=+0.000 Δvictim=-0.060 | benign Δattacker=+0.000 Δvictim=-0.145
+s025 (attacker=s051): attack Δattacker=-0.320 Δvictim=-0.110 | benign Δattacker=-0.320 Δvictim=-0.085
+s026 (attacker=s036): attack Δattacker=+0.000 Δvictim=+0.025 | benign Δattacker=+0.000 Δvictim=-0.095
+s027 (attacker=s044): attack Δattacker=+0.000 Δvictim=-0.070 | benign Δattacker=+0.000 Δvictim=-0.095
+s028 (attacker=s003): attack Δattacker=+0.000 Δvictim=-0.085 | benign Δattacker=+0.000 Δvictim=-0.095
+s029 (attacker=s026): attack Δattacker=-0.030 Δvictim=-0.225 | benign Δattacker=-0.180 Δvictim=-0.075
+s030 (attacker=s039): attack Δattacker=+0.240 Δvictim=-0.445 | benign Δattacker=-0.260 Δvictim=-0.155
+s031 (attacker=s016): attack Δattacker=+0.120 Δvictim=-0.265 | benign Δattacker=+0.000 Δvictim=+0.025
+s032 (attacker=s027): attack Δattacker=+0.140 Δvictim=-0.220 | benign Δattacker=-0.410 Δvictim=-0.010
+s033 (attacker=s051): attack Δattacker=+0.500 Δvictim=-0.500 | benign Δattacker=+0.000 Δvictim=-0.205
+s034 (attacker=s030): attack Δattacker=+0.000 Δvictim=-0.680 | benign Δattacker=+0.000 Δvictim=-0.350
+s035 (attacker=s056): attack Δattacker=+0.080 Δvictim=-0.190 | benign Δattacker=-0.100 Δvictim=-0.010
+s036 (attacker=s032): attack Δattacker=+0.000 Δvictim=-0.020 | benign Δattacker=+0.000 Δvictim=-0.100
+s037 (attacker=s049): attack Δattacker=+0.000 Δvictim=-0.260 | benign Δattacker=+0.000 Δvictim=-0.185
+s038 (attacker=s033): attack Δattacker=+0.000 Δvictim=-0.105 | benign Δattacker=+0.000 Δvictim=-0.300
+s039 (attacker=s020): attack Δattacker=+0.000 Δvictim=-0.045 | benign Δattacker=+0.000 Δvictim=-0.120
+s040 (attacker=s019): attack Δattacker=+0.760 Δvictim=-0.430 | benign Δattacker=-0.090 Δvictim=-0.230
+s041 (attacker=s054): attack Δattacker=+0.600 Δvictim=-0.455 | benign Δattacker=-0.140 Δvictim=-0.120
+s042 (attacker=s051): attack Δattacker=-0.030 Δvictim=-0.420 | benign Δattacker=-0.030 Δvictim=-0.275
+s043 (attacker=s004): attack Δattacker=+0.000 Δvictim=-0.065 | benign Δattacker=+0.000 Δvictim=-0.130
+s044 (attacker=s042): attack Δattacker=-0.160 Δvictim=-0.600 | benign Δattacker=-0.160 Δvictim=-0.400
+s046 (attacker=s010): attack Δattacker=-0.060 Δvictim=-0.800 | benign Δattacker=-0.100 Δvictim=-0.585
+s047 (attacker=s026): attack Δattacker=-0.090 Δvictim=-0.390 | benign Δattacker=-0.250 Δvictim=-0.050
+s048 (attacker=s012): attack Δattacker=+0.000 Δvictim=-0.195 | benign Δattacker=+0.000 Δvictim=-0.165
+s049 (attacker=s044): attack Δattacker=+0.730 Δvictim=-0.120 | benign Δattacker=+0.000 Δvictim=-0.220
+s050 (attacker=s022): attack Δattacker=+0.000 Δvictim=-0.085 | benign Δattacker=+0.000 Δvictim=-0.190
+s051 (attacker=s005): attack Δattacker=+0.000 Δvictim=-0.050 | benign Δattacker=+0.000 Δvictim=-0.060
+s052 (attacker=s030): attack Δattacker=+0.000 Δvictim=-0.010 | benign Δattacker=+0.000 Δvictim=-0.100
+s053 (attacker=s018): attack Δattacker=-0.020 Δvictim=-0.270 | benign Δattacker=-0.020 Δvictim=-0.340
+s054 (attacker=s057): attack Δattacker=-0.440 Δvictim=-0.720 | benign Δattacker=-0.540 Δvictim=-0.245
+s055 (attacker=s012): attack Δattacker=+0.000 Δvictim=-0.075 | benign Δattacker=+0.000 Δvictim=-0.070
+s056 (attacker=s031): attack Δattacker=-0.010 Δvictim=-0.765 | benign Δattacker=-0.010 Δvictim=-0.315
+s057 (attacker=s003): attack Δattacker=-0.010 Δvictim=-0.410 | benign Δattacker=-0.010 Δvictim=-0.040
+
+=== Aggregate across all 51 victims ===
+ATTACK -- mean Δ attacker acceptance: +3.29pp (std 23.10pp)
+BENIGN -- mean Δ attacker acceptance: -7.49pp (std 14.51pp)
+ATTACK -- mean Δ victim's own acceptance: -29.68pp
+BENIGN -- mean Δ victim's own acceptance: -17.82pp
+
+The finding this week rests on ATTACK's attacker-acceptance delta being MEANINGFULLY LARGER than BENIGN's. If they're similar, the system isn't specifically vulnerable to adversarial poisoning, it's just generally sensitive to any absorbed data -- a different, weaker finding. Report whichever is actually true, do not adjust N_ROUNDS or the absorption_percentile until the gap looks better.
+
+Saved full results to results/week4/poisoning_results.json
